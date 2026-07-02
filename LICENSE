@@ -1,0 +1,142 @@
+# Nexus Mods Author Tools License
+
+## Version 1.0 
+
+Copyright © 2026 Black Tree Gaming Ltd. (trading as Nexus Mods)
+
+---
+
+## 1. Purpose
+
+The Nexus Mods Author Tools project exists to support the creation of game modifications and to strengthen the modding ecosystem on the Nexus Mods Platform.
+
+The source code is made publicly available to encourage transparency, education, community collaboration, bug fixes, and improvements to the official Project.
+
+The goal of this License is to encourage community collaboration while ensuring there remains a single canonical version of the Project maintained by Black Tree Gaming Ltd.
+
+Community forks are welcomed for the purpose of contributing improvements back to the official Project.
+
+Forks intended to create competing products, competing services, or alternative public distributions of the Project are not permitted under this License.
+
+This License is intended to enable community participation while protecting the long-term stewardship of the Project, the investment made into its development, and the interests of the Nexus Mods Platform.
+
+---
+
+## 2. Definitions
+
+**Project** means the Nexus Mods Author Tools software, including its source code, documentation, assets, user interface, architecture, workflows, configuration, and any other materials distributed as part of the official repository.
+
+**Official Repository** means the primary source repository owned and maintained by Black Tree Gaming Ltd.
+
+**Nexus Mods Platform** means the websites, APIs, applications, services, repositories, tooling, infrastructure, and related products owned or operated by Black Tree Gaming Ltd. under the Nexus Mods brand.
+
+**Competing Service** means any product, service, website, application, repository, marketplace, hosted offering, platform, infrastructure, or other software whose primary purpose, in whole or in part, is to enable users to create, upload, host, browse, discover, manage, distribute, install, share, or download modifications for video games, or to provide tooling or infrastructure supporting such activities, regardless of whether that service is commercial, non-commercial, open source, source available, or proprietary.
+
+---
+
+## 3. Permitted Use
+
+Subject to the terms of this License, you may:
+
+* View and study the Project.
+* Clone or fork the Official Repository.
+* Build and use the Project for personal, educational, evaluation, or internal development purposes.
+* Modify the Project.
+* Maintain a public or private fork solely for the purpose of developing, testing, reviewing, or submitting contributions to the Official Repository.
+* Submit bug fixes, documentation, translations, improvements, and new features through pull requests.
+
+---
+
+## 4. Restrictions
+
+Unless expressly authorised in writing by Black Tree Gaming Ltd., you may not:
+
+* Publish, maintain, market, or promote a fork as an alternative, replacement, successor, or competing version of the Project.
+* Distribute releases, binaries, packages, installers, or other compiled or packaged versions of the Project except where reasonably necessary for contributing to the Official Repository.
+* Develop, maintain, operate, or support an independent product or service based upon the Project that is intended for ongoing public use outside the Official Repository.
+* Use the Project, or any substantial portion of its source code, documentation, architecture, user interface, workflows, assets, configuration, or design to develop, operate, maintain, or support a Competing Service.
+* Use the Project, or any substantial portion of its source code, architecture, user interface, workflows, documentation, assets, configuration, or design as the basis for developing, designing, implementing, or supporting a substantially similar product or service that competes with the Project or the Nexus Mods Platform, regardless of whether the resulting implementation is copied directly, modified, independently reimplemented, or otherwise derived from knowledge obtained through access to the Project.
+* Remove, alter, or obscure any copyright, license, attribution, or ownership notices.
+* Represent modified versions or forks as official Nexus Mods software.
+* Use the Nexus Mods name, logo, branding, trademarks, icons, artwork, or other visual identity except where expressly authorised in writing.
+
+---
+
+## 5. Contributions
+
+Community contributions are welcomed and encouraged.
+
+By intentionally submitting code, documentation, artwork, translations, tests, or other material to the Project, you represent that:
+
+* You have the legal right to submit the contribution.
+* Your contribution does not knowingly infringe the intellectual property rights of any third party.
+
+You retain copyright ownership of your individual contributions.
+
+By submitting a contribution, you grant Black Tree Gaming Ltd. a perpetual, worldwide, non-exclusive, irrevocable, royalty-free licence to use, reproduce, modify, publish, distribute, sublicense, and incorporate your contribution into the Project and future versions of the Project.
+
+Black Tree Gaming Ltd. is under no obligation to accept any contribution.
+
+---
+
+## 6. Ownership
+
+Black Tree Gaming Ltd. retains ownership of:
+
+* The Project.
+* The Project's overall architecture, direction, stewardship, and identity.
+* All original source code authored by Black Tree Gaming Ltd.
+* All documentation produced by Black Tree Gaming Ltd.
+* All Nexus Mods trademarks, branding, logos, artwork, icons, and associated intellectual property.
+
+Nothing in this License transfers ownership of any intellectual property to any licensee.
+
+---
+
+## 7. Trademarks
+
+This License grants no right to use the names "Nexus Mods", "Black Tree Gaming Ltd.", the Nexus Mods logo, or any associated trademarks, trade dress, branding, artwork, icons, or visual identity.
+
+Any such use requires prior written permission from Black Tree Gaming Ltd.
+
+---
+
+## 8. Disclaimer of Warranty
+
+THE PROJECT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+
+---
+
+## 9. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, BLACK TREE GAMING LTD. SHALL NOT BE LIABLE FOR ANY CLAIM, DAMAGES, LOSSES, OR OTHER LIABILITY ARISING FROM THE USE OF OR INABILITY TO USE THE PROJECT.
+
+---
+
+## 10. Reservation of Rights
+
+All rights not expressly granted under this License are reserved by Black Tree Gaming Ltd.
+
+Nothing in this License shall be interpreted as granting any licence, permission, or other right by implication, estoppel, or otherwise beyond those expressly stated herein.
+
+---
+
+## 11. Termination
+
+Any rights granted under this License automatically terminate upon material breach of its terms.
+
+Upon termination, you must immediately cease exercising the rights granted under this License and destroy all copies of the Project in your possession or control unless otherwise required by applicable law.
+
+---
+
+## 12. Contact
+
+Licensing enquiries and requests for additional permissions should be directed to:
+
+**Black Tree Gaming Ltd.**
+
+https://www.nexusmods.com/
+
+---
+
+End of License

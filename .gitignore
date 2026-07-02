@@ -1,0 +1,48 @@
+# Visual Studio
+.vs/
+*.VC.db
+*.VC.opendb
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+
+# VSCode
+.vscode/
+
+# Unreal Engine generated files
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+
+# Build output
+Build/**/*.obj
+Build/**/*.pdb
+Build/**/*.exp
+Build/**/*.lib
+
+# Logs
+*.log
+
+# Crash dumps
+*.dmp
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Python cache (if any scripts)
+__pycache__/
+*.pyc

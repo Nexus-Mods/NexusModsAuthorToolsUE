@@ -1,0 +1,21 @@
+# Auto-detect text files
+* text=auto
+
+# C++
+*.h     text
+*.hpp   text
+*.cpp   text
+*.inl   text
+
+# Unreal Build Tool
+*.Build.cs text
+*.Target.cs text
+*.uplugin text
+*.uproject text
+
+# Binary assets
+*.svg binary
+*.png binary
+*.ico binary
+*.uasset binary
+*.umap binary
