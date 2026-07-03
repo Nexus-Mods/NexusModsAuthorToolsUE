@@ -10,6 +10,9 @@
 
 #include "Widgets/SNexusModsWindow.h"
 //#include "Services/NexusModsApiClient.h"
+#include "Widgets/SNexusModsMarkdownWindow.h"
+#include "Interfaces/IPluginManager.h"
+
 
 #define LOCTEXT_NAMESPACE "FNexusModsModule"
 
@@ -100,16 +103,42 @@ void FNexusModsModule::PluginButtonClicked() {
 		Position += ParentWindow->GetPositionInScreen();
 		PluginWindow->MoveWindowTo(Position);
 	}
-}
 
-#include "Interfaces/IPluginManager.h"
+	//// markdown file tests: 
+	//const FString MarkdownFilePath = FPaths::ProjectPluginsDir() / TEXT("NexusModsAuthorTools/Resources/Markdown/HelpInfo.md");
+
+	//TSharedPtr<SWindow> HelpWindow = SNew(SWindow)
+	//	.Title(FText::FromString(TEXT("Help Info")))
+	//	.ClientSize(FVector2D(900.0f, 700.0f))
+	//	.CreateTitleBar(false)
+	//	.SupportsMaximize(false)
+	//	.SupportsMinimize(false);
+
+	//HelpWindow->SetContent(
+	//	SNew(SNexusModsMarkdownWindow)
+	//		.ParentWindow(HelpWindow)
+	//		.Title(FText::FromString(TEXT("Help Info")))
+	//		.MarkdownFilePath(MarkdownFilePath)
+	//		.OnCloseRequested(FSimpleDelegate::CreateLambda([HelpWindow]() {
+	//			HelpWindow->RequestDestroyWindow();
+	//		}))
+	//);
+	//FSlateApplication::Get().AddWindowAsNativeChild(
+	//	HelpWindow.ToSharedRef(),
+	//	ParentWindow.ToSharedRef()
+	//);
+	//if (ParentWindow.IsValid()) {
+	//	FVector2D Position = FVector2D(802 + 618.0, 108);
+	//	Position += ParentWindow->GetPositionInScreen();
+	//	HelpWindow->MoveWindowTo(Position);
+	//}
+}
 
 FString FNexusModsModule::GetPluginVersion() {
 	const TSharedPtr<IPlugin> Plugin = IPluginManager::Get().FindPlugin(TEXT("NexusModsAuthorTools"));
 	if (!Plugin.IsValid()) return TEXT("Unknown");
 	return Plugin->GetDescriptor().VersionName;
 }
-
 
 #undef LOCTEXT_NAMESPACE
 	

@@ -32,6 +32,7 @@ public class NexusModsAuthorTools : ModuleRules {
 			"Json",
 			"JsonUtilities",
 			"HTTP",
+			"ImageWrapper",
 			"DesktopPlatform",
 			"AssetRegistry",
 			"AssetTools",
