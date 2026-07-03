@@ -51,7 +51,6 @@ void SNexusModsButton::Construct(const FArguments& InArgs) {
 
     ChildSlot [
         SAssignNew(Button, SButton)
-            //.ButtonStyle(&FAppStyle::Get().GetWidgetStyle<FButtonStyle>("SimpleButton"))
             .ButtonStyle(&FButtonStyle::GetDefault())
             .ContentPadding(FMargin(0.0f))
             .Cursor(EMouseCursor::Hand)
