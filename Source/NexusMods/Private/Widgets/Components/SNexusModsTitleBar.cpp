@@ -29,7 +29,7 @@ void SNexusModsTitleBar::Construct(const FArguments& InArgs) {
             ]
             + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center) [
                 SNew(SNexusModsButton)
-                .IconBrushName("NexusMods.BackIcon")
+                .IconBrushName("NexusMods.Icon.NavigateBack")
                 .bTransparentBackground(true)
                 .HoverStyle(ENexusModsButtonHoverStyle::Both)
                 .ToolTipText(FText::FromString("Back"))
@@ -40,7 +40,7 @@ void SNexusModsTitleBar::Construct(const FArguments& InArgs) {
 
             + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(FNexusModsStyle::InlineControlPadding)[
                 SNew(SNexusModsButton)
-                .IconBrushName("NexusMods.CloseIcon")
+                .IconBrushName("NexusMods.Icon.ClosePanel")
                 .bTransparentBackground(true)
                 .HoverStyle(ENexusModsButtonHoverStyle::Both)
                 .ToolTipText(FText::FromString("Close"))

@@ -10,8 +10,8 @@ class SNexusModsIconToggleButton : public SCompoundWidget {
 public:
     SLATE_BEGIN_ARGS(SNexusModsIconToggleButton)
         : _IsOn(false)
-        , _OnIconBrushName("NexusMods.EyeSlashIcon")
-        , _OffIconBrushName("NexusMods.EyeIcon")
+        , _OnIconBrushName("NexusMods.Icon.HideSensitiveValue")
+        , _OffIconBrushName("NexusMods.Icon.ShowSensitiveValue")
         , _IconSize(FVector2D(16.0f, 16.0f))
         , _Padding(FNexusModsStyle::FormRowLabelPadding)
         , _bTransparentBackground(false)

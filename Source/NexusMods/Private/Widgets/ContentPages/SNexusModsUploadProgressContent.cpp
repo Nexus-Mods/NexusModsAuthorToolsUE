@@ -45,7 +45,7 @@ void SNexusModsUploadProgressContent::Construct(const FArguments& InArgs) {
                     ]
                     + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center) [
                         SNew(SNexusModsButton)
-                            .IconBrushName("NexusMods.UploadIcon")
+                            .IconBrushName("NexusMods.Icon.UploadModFile")
                             .Text(FText::FromString("Start Upload"))
                             .bTransparentBackground(false)
                             .IconPosition(ENexusModsButtonIconPosition::Right)

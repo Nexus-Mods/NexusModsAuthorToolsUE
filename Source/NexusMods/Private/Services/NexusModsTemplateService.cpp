@@ -38,7 +38,7 @@ void FNexusModsTemplateService::AddBuiltInTemplates(TArray<FNexusModsModTemplate
         ENexusModsModTemplateType::BuiltIn
     );
 
-    Template.IconBrushName = TEXT("NexusMods.FileCodeIcon");
+    Template.IconBrushName = TEXT("NexusMods.Icon.BuiltInTemplate");
     Templates.Add(Template);
 }
 
@@ -75,7 +75,7 @@ void FNexusModsTemplateService::AddProjectFolderTemplates(TArray<FNexusModsModTe
 
         Template.SourcePath = TemplatePath;
         Template.TemplateImageAssetPath = GetTemplateImageAssetPath(TemplatePath);
-        Template.IconBrushName = TEXT("NexusMods.FileUserIcon");
+        Template.IconBrushName = TEXT("NexusMods.Icon.ProjectFolderTemplate");
         Templates.Add(Template);
     }
 }

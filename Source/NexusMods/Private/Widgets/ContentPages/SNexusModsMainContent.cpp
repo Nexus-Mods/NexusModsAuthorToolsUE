@@ -52,7 +52,7 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeConfigSection() {
                 ]
                 + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center) [
                     SNew(SNexusModsButton)
-                        .IconBrushName("NexusMods.SaveIcon")
+                        .IconBrushName("NexusMods.Icon.SaveModDetails")
                         .Text(FText::FromString("Save Config"))
                         .bTransparentBackground(false)
                         .IconPosition(ENexusModsButtonIconPosition::Right)
@@ -114,7 +114,7 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeModListSection() {
                 ]
                 + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(FNexusModsStyle::ButtonGroupPadding) [
                     SNew(SNexusModsButton)
-                        .IconBrushName("NexusMods.UserPlusIcon")
+                        .IconBrushName("NexusMods.Icon.CreateModPage")
                         .Text(FText::FromString("Create Mod Page"))
                         .bTransparentBackground(false)
                         .IconPosition(ENexusModsButtonIconPosition::Right)
@@ -125,7 +125,7 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeModListSection() {
                 ]
                 + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(FNexusModsStyle::ButtonGroupPadding) [
                     SNew(SNexusModsButton)
-                        .IconBrushName("NexusMods.FilePlusIcon")
+                        .IconBrushName("NexusMods.Icon.CreateModFromTemplate")
                         .Text(FText::FromString("Use Mod Template"))
                         .bTransparentBackground(false)
                         .IconPosition(ENexusModsButtonIconPosition::Right)
@@ -135,7 +135,7 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeModListSection() {
                 ]
                 + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center) [
                     SNew(SNexusModsButton)
-                        .IconBrushName("NexusMods.LayerPlusIcon")
+                        .IconBrushName("NexusMods.Icon.AddModEntry")
                         .Text(FText::FromString("Add Mod"))
                         .bTransparentBackground(false)
                         .IconPosition(ENexusModsButtonIconPosition::Right)
@@ -190,7 +190,7 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeModRow(const FNexusModsModUploadS
             ]
             + SHorizontalBox::Slot().AutoWidth().Padding(FNexusModsStyle::ButtonGroupPadding) [
                 SNew(SNexusModsButton)
-                    .IconBrushName("NexusMods.UploadIcon")
+                    .IconBrushName("NexusMods.Icon.UploadModFile")
                     .bTransparentBackground(false)
                     .Text(FText::FromString("Upload"))
                     .IconPosition(ENexusModsButtonIconPosition::Right)
@@ -200,7 +200,7 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeModRow(const FNexusModsModUploadS
             ]
             + SHorizontalBox::Slot().AutoWidth().Padding(FNexusModsStyle::ButtonGroupPadding)[
                 SNew(SNexusModsButton)
-                    .IconBrushName("NexusMods.EditIcon")
+                    .IconBrushName("NexusMods.Icon.EditModDetails")
                     .bTransparentBackground(false)
                     .Text(FText::FromString("Edit"))
                     .IconPosition(ENexusModsButtonIconPosition::Right)
@@ -210,7 +210,7 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeModRow(const FNexusModsModUploadS
             ]
             + SHorizontalBox::Slot().AutoWidth() [
                 SNew(SNexusModsButton)
-                    .IconBrushName("NexusMods.FileErrorIcon")
+                    .IconBrushName("NexusMods.Icon.ForgetModEntry")
                     .bTransparentBackground(false)
                     .Text(FText::FromString("Delete"))
                     .IconPosition(ENexusModsButtonIconPosition::Right)

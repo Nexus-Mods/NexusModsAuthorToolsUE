@@ -65,24 +65,24 @@ TSharedRef< FSlateStyleSet > FNexusModsStyle::Create() {
 	Style->Set("NexusMods.GroupFillM", new BOX_BRUSH(TEXT("StyleAssets/GroupFillM"), Centered9Slice));
 	Style->Set("NexusMods.GroupFillR", new BOX_BRUSH(TEXT("StyleAssets/GroupFillR"), Centered9Slice));
 	/** Icon Images: **/
-	Style->Set("NexusMods.BackIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Back"), Icon16x16));
-	Style->Set("NexusMods.CheckIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Check"), Icon16x16));
-	Style->Set("NexusMods.CloseIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Close"), Icon16x16));
-	Style->Set("NexusMods.EditIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Edit"), Icon16x16));
-	Style->Set("NexusMods.FileCodeIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-FileCode"), Icon16x16));
-	Style->Set("NexusMods.FileErrorIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-FileError"), Icon16x16));
-	Style->Set("NexusMods.FilePlusIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-FilePlus"), Icon16x16));
-	Style->Set("NexusMods.FileSuccessIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-FileSuccess"), Icon16x16));
-	Style->Set("NexusMods.FileUploadIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-FileUpload"), Icon16x16));
-	Style->Set("NexusMods.FileUserIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-FileUser"), Icon16x16));
-	Style->Set("NexusMods.LayerPlusIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-LayerPlus"), Icon16x16));
-	Style->Set("NexusMods.PlusIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Plus"), Icon16x16));
-	Style->Set("NexusMods.SaveIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Save"), Icon16x16));
-	Style->Set("NexusMods.UploadIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Upload"), Icon16x16));
-	Style->Set("NexusMods.UserPlusIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-UserPlus"), Icon16x16));
-	Style->Set("NexusMods.EyeIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Eye"), Icon16x16));
-	Style->Set("NexusMods.EyeSlashIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-EyeSlash"), Icon16x16));
-	Style->Set("NexusMods.EllipsisIcon", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Ellipsis"), Icon16x16));
+	Style->Set("NexusMods.Icon.NavigateBack", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-ArrowLeft"), Icon16x16));
+	Style->Set("NexusMods.Icon.CheckboxChecked", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Check"), Icon16x16));
+	Style->Set("NexusMods.Icon.ClosePanel", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Close"), Icon16x16));
+	Style->Set("NexusMods.Icon.EditModDetails", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Edit"), Icon16x16));
+	Style->Set("NexusMods.Icon.BrowseArchive", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Ellipsis"), Icon16x16));
+	Style->Set("NexusMods.Icon.ShowSensitiveValue", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Eye"), Icon16x16));
+	Style->Set("NexusMods.Icon.HideSensitiveValue", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-EyeSlash"), Icon16x16));
+	Style->Set("NexusMods.Icon.BuiltInTemplate", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-FileCode"), Icon16x16));
+	Style->Set("NexusMods.Icon.ForgetModEntry", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-FileExcel"), Icon16x16));
+	Style->Set("NexusMods.Icon.CreateModFromTemplate", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-FileMedical"), Icon16x16));
+	Style->Set("NexusMods.Icon.UnusedFileSuccess", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-FileSuccess"), Icon16x16));
+	Style->Set("NexusMods.Icon.UnusedFileUpload", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-FileExport"), Icon16x16));
+	Style->Set("NexusMods.Icon.ProjectFolderTemplate", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-FileArchive"), Icon16x16));
+	Style->Set("NexusMods.Icon.AddModEntry", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-LayerGroup"), Icon16x16));
+	Style->Set("NexusMods.Icon.UnusedAdd", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Plus"), Icon16x16));
+	Style->Set("NexusMods.Icon.SaveModDetails", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Save"), Icon16x16));
+	Style->Set("NexusMods.Icon.UploadModFile", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-Upload"), Icon16x16));
+	Style->Set("NexusMods.Icon.CreateModPage", new IMAGE_BRUSH(TEXT("InterfaceIcons/FA-UserPlus"), Icon16x16));
 	/** Custom TextBox Styling: **/
 	FTextBlockStyle TextBlockStyle = FAppStyle::Get().GetWidgetStyle<FTextBlockStyle>("NormalText");
 	TextBlockStyle.SetSelectedBackgroundColor(FNexusModsStyle::NexusOrange);
@@ -101,11 +101,11 @@ TSharedRef< FSlateStyleSet > FNexusModsStyle::Create() {
 
 	FSlateBrush ProgressBackgroundBrush = *BaseFillBrush;
 	ProgressBackgroundBrush.TintColor = FSlateColor(FLinearColor(0.04f, 0.04f, 0.04f, 1.f));
-	ProgressBackgroundBrush.ImageSize = FVector2D(16.f, 16.f);
+	ProgressBackgroundBrush.ImageSize = Icon16x16;
 
 	FSlateBrush ProgressFillBrush = *BaseFillBrush;
 	ProgressFillBrush.TintColor = FSlateColor(NexusOrange);
-	ProgressFillBrush.ImageSize = FVector2D(16.f, 16.f);
+	ProgressFillBrush.ImageSize = Icon16x16;
 
 	FProgressBarStyle ProgressBarStyle = FProgressBarStyle()
 		.SetBackgroundImage(ProgressBackgroundBrush)

@@ -45,7 +45,7 @@ void SNexusModsEditModContent::Construct(const FArguments& InArgs) {
                     ]
                     + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center) [
                         SNew(SNexusModsButton)
-                            .IconBrushName("NexusMods.SaveIcon")
+                            .IconBrushName("NexusMods.Icon.SaveModDetails")
                             .Text(FText::FromString("Save Mod"))
                             .bTransparentBackground(false)
                             .IconPosition(ENexusModsButtonIconPosition::Right)
@@ -93,7 +93,7 @@ void SNexusModsEditModContent::Construct(const FArguments& InArgs) {
                     + SHorizontalBox::Slot().AutoWidth().Padding(FNexusModsStyle::InlineControlPadding) [
                         SNew(SNexusModsButton)
                             //.Text(FText::FromString("..."))
-                            .IconBrushName("NexusMods.EllipsisIcon")
+                            .IconBrushName("NexusMods.Icon.BrowseArchive")
                             .bTransparentBackground(false)
                             .HoverStyle(ENexusModsButtonHoverStyle::Both)
                             .ToolTipText(FText::FromString("Browse for mod archive"))

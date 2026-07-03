@@ -218,7 +218,7 @@ TSharedRef<SWidget> SNexusModsCreateFromTemplateContent::MakeDetailsHeader() {
             ]
             + SHorizontalBox::Slot().AutoWidth().Padding(FNexusModsStyle::ButtonGroupPadding) [
                 SNew(SNexusModsButton)
-                    .IconBrushName("NexusMods.FilePlusIcon")
+                    .IconBrushName("NexusMods.Icon.CreateModFromTemplate")
                     .Text(FText::FromString("Create Mod"))
                     .bTransparentBackground(false)
                     .IconPosition(ENexusModsButtonIconPosition::Right)
@@ -230,7 +230,7 @@ TSharedRef<SWidget> SNexusModsCreateFromTemplateContent::MakeDetailsHeader() {
             ]
             + SHorizontalBox::Slot().AutoWidth().Padding(FNexusModsStyle::ButtonGroupPadding) [
                 SNew(SNexusModsButton)
-                    .IconBrushName("NexusMods.CloseIcon")
+                    .IconBrushName("NexusMods.Icon.ClosePanel")
                     .Text(FText::FromString("Exit"))
                     .bTransparentBackground(false)
                     .IconPosition(ENexusModsButtonIconPosition::Right)
