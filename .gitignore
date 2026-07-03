@@ -14,16 +14,15 @@
 .vscode/
 
 # Unreal Engine generated files
-Binaries/
-Intermediate/
-Saved/
 DerivedDataCache/
+Intermediate/
+Binaries/
+Saved/
 
-# Build output
-Build/**/*.obj
-Build/**/*.pdb
-Build/**/*.exp
-Build/**/*.lib
+# Build artifacts
+Config/FilterPlugin.ini
+Build/
+Dist/
 
 # Logs
 *.log

@@ -3,6 +3,7 @@
 
 # C++
 *.h     text
+*.c     text
 *.hpp   text
 *.cpp   text
 *.inl   text
