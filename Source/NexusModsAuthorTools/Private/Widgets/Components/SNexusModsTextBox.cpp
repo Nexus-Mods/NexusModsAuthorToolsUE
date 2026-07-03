@@ -1,6 +1,8 @@
 #include "Widgets/Components/SNexusModsTextBox.h"
 
+#include "InputCoreTypes.h"
 #include "Widgets/Input/SMultiLineEditableTextBox.h"
+#include "Widgets/Layout/SScrollBar.h"
 #include "Widgets/Images/SImage.h"
 #include "Widgets/SOverlay.h"
 #include "NexusModsStyle.h"
@@ -28,6 +30,12 @@ void SNexusModsTextBox::Construct(const FArguments& InArgs) {
 
     SetupTextBoxImageBrushes();
 
+    TSharedRef<SScrollBar> VerticalScrollBar =
+        SNew(SScrollBar)
+            .Orientation(Orient_Vertical)
+            .Thickness(FVector2D(8.0f, 8.0f))
+            .Style(&FNexusModsStyle::Get().GetWidgetStyle<FScrollBarStyle>("NexusMods.ScrollBar"));
+
     ChildSlot [
         SNew(SOverlay)
         + SOverlay::Slot() [
@@ -49,7 +57,9 @@ void SNexusModsTextBox::Construct(const FArguments& InArgs) {
                 .OnTextCommitted(this, &SNexusModsTextBox::OnInternalTextCommitted)
                 .AllowMultiLine(bAllowMultiLine)
                 .AutoWrapText(bAutoWrapText)
+                .VScrollBar(VerticalScrollBar)
                 .Style(&FNexusModsStyle::Get().GetWidgetStyle<FEditableTextBoxStyle>("NexusMods.TextBox.Inner"))
+                .Cursor(EMouseCursor::Hand)
         ]
     ];
 }

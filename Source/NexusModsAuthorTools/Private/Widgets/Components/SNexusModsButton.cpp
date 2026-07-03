@@ -1,5 +1,6 @@
 #include "Widgets/Components/SNexusModsButton.h"
 
+#include "InputCoreTypes.h"
 #include "Widgets/Images/SImage.h"
 #include "Widgets/Input/SButton.h"
 #include "Widgets/Text/STextBlock.h"
@@ -53,6 +54,7 @@ void SNexusModsButton::Construct(const FArguments& InArgs) {
             //.ButtonStyle(&FAppStyle::Get().GetWidgetStyle<FButtonStyle>("SimpleButton"))
             .ButtonStyle(&FButtonStyle::GetDefault())
             .ContentPadding(FMargin(0.0f))
+            .Cursor(EMouseCursor::Hand)
             .ToolTipText(InArgs._ToolTipText)
             .ForegroundColor(this, &SNexusModsButton::GetButtonForegroundColor)
             .ButtonColorAndOpacity(this, &SNexusModsButton::GetButtonBackgroundColor)

@@ -1,6 +1,7 @@
 #include "Widgets/ContentPages/SNexusModsUploadProgressContent.h"
 
 #include "Misc/Paths.h"
+#include "Services/NexusModsArchiveService.h"
 #include "NexusModsStyle.h"
 #include "Styling/AppStyle.h"
 #include "Widgets/Layout/SBorder.h"
@@ -16,6 +17,19 @@
 namespace {
     ECheckBoxState BoolToCheckBoxState(const bool bValue) {
         return bValue ? ECheckBoxState::Checked : ECheckBoxState::Unchecked;
+    }
+
+    FString MakeSafeArchiveName(const FString& DisplayName, const FString& Version) {
+        FString SafeDisplayName = DisplayName.IsEmpty() ? TEXT("Mod") : DisplayName;
+        FString SafeVersion = Version.IsEmpty() ? TEXT("1.0.0") : Version;
+
+        const TCHAR InvalidCharacters[] = TEXT("\\/:*?\"<>|");
+        for (int32 CharacterIndex = 0; CharacterIndex < UE_ARRAY_COUNT(InvalidCharacters) - 1; ++CharacterIndex) {
+            SafeDisplayName.ReplaceCharInline(InvalidCharacters[CharacterIndex], TEXT('-'));
+            SafeVersion.ReplaceCharInline(InvalidCharacters[CharacterIndex], TEXT('-'));
+        }
+
+        return FString::Printf(TEXT("%s-%s.zip"), *SafeDisplayName, *SafeVersion);
     }
 }
 
@@ -257,16 +271,6 @@ FReply SNexusModsUploadProgressContent::OnStartUploadClicked() {
         FinishUpload();
         return FReply::Handled();
     }
-    if (ModState.ArchivePath.IsEmpty()) {
-        AddLogLine(TEXT("Archive path is missing."));
-        FinishUpload();
-        return FReply::Handled();
-    }
-    if (!FPaths::FileExists(ModState.ArchivePath)) {
-        AddLogLine(TEXT("Archive file does not exist."));
-        FinishUpload();
-        return FReply::Handled();
-    }
 
     FString Version = GetUploadVersion();
     if (IsCheckBoxChecked(AutoIncrementVersionCheckBox)) {
@@ -285,12 +289,57 @@ FReply SNexusModsUploadProgressContent::OnStartUploadClicked() {
         return FReply::Handled();
     }
 
+    FString ArchivePath = ModState.ArchivePath;
+
+    if (!ArchivePath.IsEmpty() && ModState.ModFilePaths.Num() > 0) {
+        AddLogLine(TEXT("Both a pre-built archive and loose mod files are selected. Clear one before uploading."));
+        FinishUpload();
+        return FReply::Handled();
+    }
+
+    if (ArchivePath.IsEmpty()) {
+        if (ModState.ModFilePaths.Num() == 0) {
+            AddLogLine(TEXT("Archive path is missing and no loose mod files were selected."));
+            FinishUpload();
+            return FReply::Handled();
+        }
+
+        AddLogLine(TEXT("No pre-built archive selected. Building archive from selected loose mod files..."));
+
+        FNexusModsArchiveBuildRequest ArchiveBuildRequest;
+        ArchiveBuildRequest.SourcePaths = ModState.ModFilePaths;
+        ArchiveBuildRequest.OutputDirectory = FPaths::ProjectSavedDir() / TEXT("ArchivedMods");
+        ArchiveBuildRequest.ArchiveName = MakeSafeArchiveName(ModState.DisplayName, Version);
+
+        const FNexusModsArchiveBuildResult ArchiveBuildResult = FNexusModsArchiveService::BuildArchive(
+            ArchiveBuildRequest,
+            FNexusModsArchiveLogDelegate::CreateLambda([this](const FString& Line) {
+                AddLogLine(Line);
+            })
+        );
+
+        if (!ArchiveBuildResult.bSuccess) {
+            AddLogLine(FString::Printf(TEXT("Archive build failed: %s"), *ArchiveBuildResult.ErrorMessage));
+            FinishUpload();
+            return FReply::Handled();
+        }
+
+        ArchivePath = ArchiveBuildResult.ArchivePath;
+        AddLogLine(FString::Printf(TEXT("Created archive: %s"), *ArchivePath));
+    }
+
+    if (!FPaths::FileExists(ArchivePath)) {
+        AddLogLine(TEXT("Archive file does not exist."));
+        FinishUpload();
+        return FReply::Handled();
+    }
+
     FNexusModsUploadRequest Request;
     Request.GameDomain = GameDomain;
     Request.ApiKey = ApiKey;
     Request.FileId = FileId;
-    Request.Filename = FPaths::GetCleanFilename(ModState.ArchivePath);
-    Request.ArchivePath = ModState.ArchivePath;
+    Request.Filename = FPaths::GetCleanFilename(ArchivePath);
+    Request.ArchivePath = ArchivePath;
     Request.Version = Version;
     Request.DisplayName = ModState.DisplayName;
     Request.Description = DescriptionTextBox.IsValid() ? DescriptionTextBox->GetText().ToString() : FString();

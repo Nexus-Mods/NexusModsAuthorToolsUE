@@ -25,6 +25,7 @@ public:
     virtual FReply OnMouseMove(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent) override;
 
 private:
+    FReply OnNexusModsIconClicked();
     FReply OnBackClicked();
     FReply OnCloseClicked();
 

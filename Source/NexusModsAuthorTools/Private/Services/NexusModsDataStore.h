@@ -8,6 +8,7 @@ struct FNexusModsModUploadState {
 
     FString DisplayName;
     FString ArchivePath;
+    TArray<FString> ModFilePaths;
     FString Version;
     FString Description;
     FString Category = TEXT("main");

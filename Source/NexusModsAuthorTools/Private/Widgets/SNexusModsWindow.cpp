@@ -10,6 +10,7 @@
 #include "Widgets/Components/SNexusModsTitleBar.h"
 #include "Widgets/SBoxPanel.h"
 #include "Styling/AppStyle.h"
+#include "NexusModsAuthorTools.h"
 
 //#include "NexusModsStyle.h"
 //FNexusModsStyle::Get().GetBrush("NexusMods.GroupBorderM")
@@ -189,7 +190,12 @@ FText SNexusModsWindow::GetPageTitle() const {
             return FText::FromString("Nexus Mods: Create From Template");
         case ENexusModsPage::Main:
         default:
-            return FText::FromString("Nexus Mods: Author Tool - vALPHA");
+            FString PluginVersion = FNexusModsModule::GetPluginVersion();
+            return FText::Format(
+                INVTEXT("Nexus Mods: Author Tool - {0} (ALPHA)"), 
+                FText::FromString(PluginVersion)
+            );
+            //return FText::FromString("Nexus Mods: Author Tool - v{0}");
     }
 }
 

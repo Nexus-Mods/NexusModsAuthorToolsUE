@@ -1,12 +1,13 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "NexusModsStyle.h"
-#include "NexusMods.h"
+#include "NexusModsAuthorTools.h"
 #include "Framework/Application/SlateApplication.h"
 #include "Styling/SlateStyleRegistry.h"
 #include "Slate/SlateGameResources.h"
 #include "Interfaces/IPluginManager.h"
 #include "Styling/SlateStyleMacros.h"
+#include "Brushes/SlateColorBrush.h"
 
 #define RootToContentDir Style->RootToContentDir
 
@@ -52,7 +53,7 @@ const FVector2D Icon20x20(20.0f, 20.0f);
 
 TSharedRef< FSlateStyleSet > FNexusModsStyle::Create() {
 	TSharedRef< FSlateStyleSet > Style = MakeShareable(new FSlateStyleSet("NexusModsStyle"));
-	Style->SetContentRoot(IPluginManager::Get().FindPlugin("NexusMods")->GetBaseDir() / TEXT("Resources"));
+	Style->SetContentRoot(IPluginManager::Get().FindPlugin("NexusModsAuthorTools")->GetBaseDir() / TEXT("Resources"));
 	/** Main Plugin Image: **/
 	Style->Set("NexusMods.PluginAction", new IMAGE_BRUSH_SVG(TEXT("InterfaceIcons/NexusModsIcon"), Icon20x20));
 	/** Border/Fill Images: (Buttons/Textboxes/Checkboxes/etc) **/
@@ -96,7 +97,7 @@ TSharedRef< FSlateStyleSet > FNexusModsStyle::Create() {
 		.SetTextStyle(TextBlockStyle)
 		.SetPadding(FMargin(0.0f));
 	Style->Set("NexusMods.TextBox.Inner", TextBoxInnerStyle);
-	/** Custom Progress BarStyling: **/
+	/** Custom Progress Bar Styling: **/
 	const FSlateBrush* BaseFillBrush = Style->GetBrush("NexusMods.BaseFill");
 
 	FSlateBrush ProgressBackgroundBrush = *BaseFillBrush;
@@ -114,6 +115,29 @@ TSharedRef< FSlateStyleSet > FNexusModsStyle::Create() {
 		.SetEnableFillAnimation(false);
 
 	Style->Set("NexusMods.ProgressBar", ProgressBarStyle);
+	/** Custom Scrollbar Styling: **/
+	const FSlateColorBrush ScrollbarBackgroundBrush(FLinearColor::Transparent);
+	const FSlateColorBrush ScrollbarNormalThumbBrush(FLinearColor(
+		NexusOrange.R,
+		NexusOrange.G,
+		NexusOrange.B,
+		0.45f));
+	const FSlateColorBrush ScrollbarHoveredThumbBrush(NexusOrange);
+	const FSlateColorBrush ScrollbarDraggedThumbBrush(NexusOrangeLight);
+
+	FScrollBarStyle ScrollBarStyle = FScrollBarStyle()
+		.SetHorizontalBackgroundImage(ScrollbarBackgroundBrush)
+		.SetVerticalBackgroundImage(ScrollbarBackgroundBrush)
+		.SetVerticalTopSlotImage(ScrollbarBackgroundBrush)
+		.SetVerticalBottomSlotImage(ScrollbarBackgroundBrush)
+		.SetHorizontalTopSlotImage(ScrollbarBackgroundBrush)
+		.SetHorizontalBottomSlotImage(ScrollbarBackgroundBrush)
+		.SetNormalThumbImage(ScrollbarNormalThumbBrush)
+		.SetHoveredThumbImage(ScrollbarHoveredThumbBrush)
+		.SetDraggedThumbImage(ScrollbarDraggedThumbBrush);
+
+	Style->Set("NexusMods.ScrollBar", ScrollBarStyle);
+
 	/** Custom Styles End: return style **/
 	return Style;
 }

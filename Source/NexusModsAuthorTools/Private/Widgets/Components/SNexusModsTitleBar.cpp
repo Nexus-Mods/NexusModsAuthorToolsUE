@@ -10,6 +10,8 @@
 #include "Widgets/SWindow.h"
 #include "Widgets/Text/STextBlock.h"
 #include "Widgets/Components/SNexusModsButton.h"
+#include "Interfaces/IPluginManager.h"
+#include "HAL/PlatformProcess.h"
 
 void SNexusModsTitleBar::Construct(const FArguments& InArgs) {
     Window = InArgs._Window;
@@ -22,7 +24,14 @@ void SNexusModsTitleBar::Construct(const FArguments& InArgs) {
         .BorderImage(FAppStyle::GetBrush("Brushes.Recessed")) [
             SNew(SHorizontalBox)
             + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(FNexusModsStyle::ButtonGroupPadding) [
-                SNew(SImage).Image(FNexusModsStyle::Get().GetBrush("NexusMods.PluginAction"))
+                SNew(SButton)
+                    .ButtonStyle(FAppStyle::Get(), "SimpleButton")
+                    .ContentPadding(0.0f)
+                    .Cursor(EMouseCursor::Hand)
+                    .ToolTipText(FText::FromString("Open Nexus Mods"))
+                    .OnClicked(this, &SNexusModsTitleBar::OnNexusModsIconClicked) [
+                        SNew(SImage).Image(FNexusModsStyle::Get().GetBrush("NexusMods.PluginAction"))
+                    ]
             ]
             + SHorizontalBox::Slot().FillWidth(1.0f).VAlign(VAlign_Center) [
                 SNew(STextBlock).Text(InArgs._Title).Font(FAppStyle::GetFontStyle("BoldFont"))
@@ -86,6 +95,11 @@ FReply SNexusModsTitleBar::OnMouseMove(const FGeometry& MyGeometry, const FPoint
     }
 
     return FReply::Unhandled();
+}
+
+FReply SNexusModsTitleBar::OnNexusModsIconClicked() {
+    FPlatformProcess::LaunchURL(TEXT("https://www.nexusmods.com"), nullptr, nullptr);
+    return FReply::Handled();
 }
 
 FReply SNexusModsTitleBar::OnBackClicked() {

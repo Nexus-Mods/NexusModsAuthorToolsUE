@@ -1,6 +1,7 @@
 #include "Widgets/ContentPages/SNexusModsCreateFromTemplateContent.h"
 
 #include "NexusModsStyle.h"
+#include "InputCoreTypes.h"
 #include "Styling/AppStyle.h"
 #include "Engine/Texture2D.h"
 #include "Widgets/Components/SNexusModsButton.h"
@@ -54,6 +55,7 @@ void SNexusModsCreateFromTemplateContent::RefreshContent() {
 
     ContentBox->SetContent(
         SNew(SScrollBox)
+        .ScrollBarStyle(&FNexusModsStyle::Get().GetWidgetStyle<FScrollBarStyle>("NexusMods.ScrollBar"))
         + SScrollBox::Slot() [
             bShowingTemplateDetails ? MakeTemplateDetailsSection() : MakeTemplateSelectionSection()
         ]
@@ -72,6 +74,7 @@ TSharedRef<SWidget> SNexusModsCreateFromTemplateContent::MakeTemplateSelectionSe
         ]
         + SVerticalBox::Slot().FillHeight(1.0f).Padding(FNexusModsStyle::ContentPadding) [
             SNew(SScrollBox)
+        .ScrollBarStyle(&FNexusModsStyle::Get().GetWidgetStyle<FScrollBarStyle>("NexusMods.ScrollBar"))
             + SScrollBox::Slot() [
                 MakeTemplateGrid()
             ]
@@ -96,6 +99,7 @@ TSharedRef<SWidget> SNexusModsCreateFromTemplateContent::MakeTemplateCard(const 
         SNew(SButton)
             .ButtonStyle(FAppStyle::Get(), "SimpleButton")
             .ContentPadding(0)
+            .Cursor(EMouseCursor::Hand)
             .ToolTipText(Template.Description)
             .OnClicked(this, &SNexusModsCreateFromTemplateContent::OnTemplateClicked, TemplateIndex) [
                 SNew(SBorder).Padding(FNexusModsStyle::ContentPadding).BorderImage(FAppStyle::GetBrush("Brushes.Panel")) [

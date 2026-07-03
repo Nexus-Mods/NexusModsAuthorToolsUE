@@ -147,6 +147,7 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeModListSection() {
         ]
         + SVerticalBox::Slot().FillHeight(1.0f).Padding(FNexusModsStyle::ContentPadding) [
             SNew(SScrollBox)
+        .ScrollBarStyle(&FNexusModsStyle::Get().GetWidgetStyle<FScrollBarStyle>("NexusMods.ScrollBar"))
             + SScrollBox::Slot() [
                 SAssignNew(ModsListBox, SVerticalBox)
             ]

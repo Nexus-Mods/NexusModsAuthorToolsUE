@@ -1,6 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "NexusMods.h"
+#include "NexusModsAuthorTools.h"
 #include "NexusModsStyle.h"
 #include "NexusModsCommands.h"
 #include "ToolMenus.h"
@@ -70,8 +70,8 @@ void FNexusModsModule::PluginButtonClicked() {
 		.SupportsMaximize(false)
 		.SupportsMinimize(false)
 		.HasCloseButton(false)
-		.ClientSize(FVector2D(608, 380))
-		.MinWidth(608.0f)
+		.ClientSize(FVector2D(618, 380))
+		.MinWidth(618.0f)
 		.MaxWidth(1024.0f)
 		.MinHeight(380.0f)
 		.MaxHeight(680.0f);
@@ -102,7 +102,15 @@ void FNexusModsModule::PluginButtonClicked() {
 	}
 }
 
+#include "Interfaces/IPluginManager.h"
+
+FString FNexusModsModule::GetPluginVersion() {
+	const TSharedPtr<IPlugin> Plugin = IPluginManager::Get().FindPlugin(TEXT("NexusModsAuthorTools"));
+	if (!Plugin.IsValid()) return TEXT("Unknown");
+	return Plugin->GetDescriptor().VersionName;
+}
+
 
 #undef LOCTEXT_NAMESPACE
 	
-IMPLEMENT_MODULE(FNexusModsModule, NexusMods)
+IMPLEMENT_MODULE(FNexusModsModule, NexusModsAuthorTools)

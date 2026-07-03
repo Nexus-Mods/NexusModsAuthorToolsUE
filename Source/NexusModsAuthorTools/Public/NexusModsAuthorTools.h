@@ -17,7 +17,9 @@ public:
 	virtual void ShutdownModule() override;
 	/** This function will be bound to Command. */
 	void PluginButtonClicked();
-	
+	/** Helper functions: **/
+	static FString GetPluginVersion();
+
 private:
 	/** Functions: */
 	void RegisterMenus();

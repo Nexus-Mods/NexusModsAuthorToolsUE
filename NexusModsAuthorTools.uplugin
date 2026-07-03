@@ -1,0 +1,30 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1",
+	"FriendlyName": "NexusModsAuthorTools",
+	"Description": "Tooling designed to assist mod authors in creating, managing, and uploading mods to NeuxsMods",
+	"Category": "Modding",
+	"CreatedBy": "DekitaRPG @ NexusMods",
+	"CreatedByURL": "https://www.nexusmods.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "https://github.com/Nexus-Mods/UnrealEngineAuthorTools",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "NexusModsAuthorTools",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "EditorScriptingUtilities",
+			"Enabled": true
+		}
+	]
+}

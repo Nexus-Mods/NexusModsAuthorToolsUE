@@ -51,6 +51,17 @@ bool FNexusModsDataStore::Load() {
 
             ModObject->TryGetStringField(TEXT("DisplayName"), State.DisplayName);
             ModObject->TryGetStringField(TEXT("ArchivePath"), State.ArchivePath);
+
+            const TArray<TSharedPtr<FJsonValue>>* ModFilesArray = nullptr;
+            if (ModObject->TryGetArrayField(TEXT("ModFilePaths"), ModFilesArray) || ModObject->TryGetArrayField(TEXT("PakFilePaths"), ModFilesArray)) {
+                for (const TSharedPtr<FJsonValue>& ModFileValue : *ModFilesArray) {
+                    FString ModFilePath;
+                    if (ModFileValue.IsValid() && ModFileValue->TryGetString(ModFilePath) && !ModFilePath.IsEmpty()) {
+                        State.ModFilePaths.Add(ModFilePath);
+                    }
+                }
+            }
+
             ModObject->TryGetStringField(TEXT("Version"), State.Version);
             ModObject->TryGetStringField(TEXT("Description"), State.Description);
             ModObject->TryGetStringField(TEXT("Category"), State.Category);
@@ -87,6 +98,13 @@ bool FNexusModsDataStore::Save() const {
         ModObject->SetStringField(TEXT("EntryId"), State.EntryId.ToString());
         ModObject->SetStringField(TEXT("DisplayName"), State.DisplayName);
         ModObject->SetStringField(TEXT("ArchivePath"), State.ArchivePath);
+
+        TArray<TSharedPtr<FJsonValue>> ModFilesArray;
+        for (const FString& ModFilePath : State.ModFilePaths) {
+            ModFilesArray.Add(MakeShared<FJsonValueString>(ModFilePath));
+        }
+        ModObject->SetArrayField(TEXT("ModFilePaths"), ModFilesArray);
+
         ModObject->SetStringField(TEXT("Version"), State.Version);
         ModObject->SetStringField(TEXT("Description"), State.Description);
         ModObject->SetStringField(TEXT("Category"), State.Category);

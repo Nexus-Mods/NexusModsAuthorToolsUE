@@ -59,9 +59,6 @@ public:
         : _IsChecked(ECheckBoxState::Unchecked)
         , _CheckboxEnabled(true)
         , _Size(FVector2D(18.0f, 18.0f))
-        , _CheckmarkSize(FVector2D(12.0f, 12.0f))
-        , _CheckmarkColor(FNexusModsStyle::NexusOrange)
-        , _CheckmarkBrushName("NexusMods.Icon.CheckboxChecked")
         , _NormalBackgroundColor(FLinearColor(0.0f, 0.0f, 0.0f, 0.31f))
         , _HoverBackgroundColor(FLinearColor(1.0f, 1.0f, 1.0f, 0.08f))
         //, _CheckedBackgroundColor(FLinearColor(
@@ -75,6 +72,9 @@ public:
         , _HoverBorderColor(FNexusModsStyle::NexusOrange)
         , _CheckedBorderColor(FNexusModsStyle::NexusOrange)
         , _DisabledBorderColor(FLinearColor(0.10f, 0.10f, 0.10f, 1.0f))
+        , _CheckmarkColor(FNexusModsStyle::NexusOrange)
+        , _CheckmarkBrushName("NexusMods.Icon.CheckboxChecked")
+        , _CheckmarkSize(FVector2D(12.0f, 12.0f))
     {}
         SLATE_ARGUMENT(ECheckBoxState, IsChecked)
         SLATE_ARGUMENT(bool, CheckboxEnabled)

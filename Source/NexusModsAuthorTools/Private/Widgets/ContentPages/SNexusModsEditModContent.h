@@ -5,6 +5,7 @@
 #include "Widgets/SCompoundWidget.h"
 
 class SNexusModsTextBox;
+class STextBlock;
 
 class SNexusModsEditModContent : public SCompoundWidget
 {
@@ -23,7 +24,12 @@ private:
     TSharedRef<SWidget> MakeFormRow(const FText& Label, const TSharedRef<SWidget>& ValueWidget);
 
     FReply OnSaveClicked();
-    FReply OnBrowseArchiveClicked();
+    FReply OnAddModFilesClicked();
+    FReply OnClearModFilesClicked();
+    void RefreshModFilesText();
+    void RefreshModFilesWarning();
+    EVisibility GetModFilesWarningVisibility() const;
+    FText GetModFilesWarningText() const;
     FReply OnToggleUploadCodeVisibility();
     bool IsUploadCodeHidden() const;
 
@@ -38,7 +44,11 @@ private:
 
     TSharedPtr<SNexusModsTextBox> DisplayNameTextBox;
     TSharedPtr<SNexusModsTextBox> FileIdTextBox;
-    TSharedPtr<SNexusModsTextBox> ArchivePathTextBox;
+    TSharedPtr<SNexusModsTextBox> ModFilesTextBox;
+    TSharedPtr<STextBlock> ModFilesWarningTextBlock;
+    FString ArchivePath;
+    TArray<FString> ModFilePaths;
+    bool bHasModFileSelectionWarning = false;
 
     bool bIsUploadCodeHidden = true;
 };

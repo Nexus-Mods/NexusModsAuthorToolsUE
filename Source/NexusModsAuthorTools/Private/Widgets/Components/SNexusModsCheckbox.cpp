@@ -35,7 +35,8 @@ void SNexusModsCheckbox::Construct(const FArguments& InArgs) {
         SNew(SBox)
             .ToolTipText(ToolTipText)
             .WidthOverride(Size.X)
-            .HeightOverride(Size.Y) [
+            .HeightOverride(Size.Y)
+            .Cursor(EMouseCursor::Hand) [
             SNew(SOverlay)
             + SOverlay::Slot() [
                 SNew(SImage)
