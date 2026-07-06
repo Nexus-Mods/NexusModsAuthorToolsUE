@@ -6,14 +6,17 @@ Rather than requiring authors to switch between multiple external tools, the plu
 
 <div align="center">
 
-![Status](https://img.shields.io/badge/Status-Active_Development-2EA043?style=for-the-badge)
-[![Version](https://img.shields.io/badge/Version-v0.1-3B82F6?style=for-the-badge)](https://github.com/Nexus-Mods/NexusModsAuthorTools/releases)
-[![License](https://img.shields.io/badge/License-Custom-6B7280?style=for-the-badge)](/LICENSE)
-![Compatibility](https://img.shields.io/badge/Unreal_Engine-4.26_→_5.8-8B5CF6?style=for-the-badge)
+<img alt="Project Status" src="https://img.shields.io/badge/Status-Active_Development-2EA043?style=for-the-badge" />
+<a href="https://github.com/Nexus-Mods/NexusModsAuthorTools/releases" aria-label="Latest Release">
+    <img alt="Latest Release" src="https://img.shields.io/github/v/release/Nexus-Mods/NexusModsAuthorToolsUE?style=for-the-badge" />
+</a>
+<a href="LICENSE" aria-label="License">
+    <img alt="Project License" src="https://img.shields.io/badge/License-Custom-6B7280?style=for-the-badge" />
+</a>
+<img alt="Supported Unreal Engine Versions" src="https://img.shields.io/badge/Unreal_Engine-4.26_→_5.8-8B5CF6?style=for-the-badge" />
 
 </div>
 
-[![Nexus Mods](https://img.shields.io/badge/Nexus_Mods-Author_Tool-EF7D00?style=for-the-badge)](https://www.nexusmods.com/)
 
 <h1>Header Test</h1>
 
