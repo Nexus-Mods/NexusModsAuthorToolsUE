@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Nexus Mods
+    url: https://www.nexusmods.com/
+    about: Visit Nexus Mods.
+  - name: Project Releases
+    url: https://github.com/Nexus-Mods/NexusModsAuthorToolsUE/releases
+    about: Download the latest release package.
