@@ -1,12 +1,16 @@
 # Nexus Mods Author Tools
 
-Nexus Mods Author Tools is an open-source Unreal Engine plugin designed to simplify the process of creating, managing, packaging, and publishing game mods for the Nexus Mods ecosystem.
+Nexus Mods Author Tools is an open-source Unreal Engine plugin designed to simplify the process of creating, managing, packaging, and publishing game mods to Nexus Mods.
 
 Rather than requiring authors to switch between multiple external tools, the plugin integrates common mod development workflows directly into the Unreal Editor, helping both new and experienced creators spend less time on project setup and more time building content.
 
-> **Status:** Active development
+[![Nexus Mods](https://img.shields.io/badge/Nexus_Mods-Author_Tool-EF7D00?style=for-the-badge)](https://www.nexusmods.com/)
+![Status](https://img.shields.io/badge/Status-Active_Development-2EA043?style=for-the-badge)
+[![Version](https://img.shields.io/badge/Version-v0.1-3B82F6?style=for-the-badge)](https://github.com/Nexus-Mods/NexusModsAuthorTools/releases)
+[![License](https://img.shields.io/badge/License-Custom-6B7280?style=for-the-badge)](/LICENSE)
+![Compatibility](https://img.shields.io/badge/Unreal_Engine-4.26_→_5.8-8B5CF6?style=for-the-badge)
 
----
+<h1>Header Test</h1>
 
 # Features
 
@@ -20,15 +24,17 @@ Current capabilities include:
 
 The plugin is actively developed and additional functionality will continue to be added over time.
 
-## Coming Soon
+# Coming Soon
 
-Features Not fully implemented include:
+Planned areas of development include:
 
 * Markdown rendering for in-editor help, documentation, and release notes
-* Packaging mod files and copying them to game directory
+* Additional mod packaging & modding workflows
+* Improved validation and diagnostics
+* Additional project templates
+* Expanded editor utilities
+* Improved documentation
 
-
----
 
 # Supported Engine Versions
 
@@ -48,7 +54,6 @@ The plugin currently supports:
 
 Support for additional engine versions may be added in future releases.
 
----
 
 # Installation
 
@@ -58,8 +63,6 @@ Support for additional engine versions may be added in future releases.
 4. Compile the project using Visual Studio or Unreal Build Tool.
 5. Open your project in Unreal Engine.
 6. Enable the plugin if prompted.
-
----
 
 # Building
 
@@ -95,8 +98,6 @@ This allows configuration of:
 * GitHub release behaviour
 * Build output options
 
----
-
 # Project Structure
 
 The project is organised into several primary systems:
@@ -107,9 +108,6 @@ The project is organised into several primary systems:
 * **Archive Services** — packaging and distribution.
 * **Build Scripts** — automated multi-version packaging and release tooling.
 * **Compatibility Layer** — shared Unreal Engine version abstraction supporting UE4 and UE5.
-
----
-
 
 # Contributing
 
@@ -123,23 +121,6 @@ If you would like to contribute:
 * Follow the existing project coding style and conventions.
 
 Please keep changes focused, well documented, and consistent with the project's architecture.
-
----
-
-# Roadmap
-
-Planned areas of development include:
-
-* Additional packaging workflows
-* Improved validation and diagnostics
-* Enhanced metadata editing
-* Additional project templates
-* Expanded editor utilities
-* Improved documentation
-* Better onboarding for new mod authors
-* Additional Unreal Engine modding workflows
-
----
 
 # Troubleshooting
 
@@ -167,28 +148,22 @@ Output/Logs
 
 for detailed diagnostics.
 
----
-
 # License
 
 This project is licensed under the terms described in the accompanying LICENSE file.
 
 While contributions are welcome, the project is intended to support the Nexus Mods ecosystem and may not be used to develop competing commercial mod distribution services as described in the accompanying license.
 
----
-
 # Third-Party Libraries
 
 This project makes use of several third-party libraries:
 
-| Library                               | Purpose                             | License                                                |
-| ------------------------------------- | ----------------------------------- | ------------------------------------------------------ |
-| **miniz**                             | ZIP archive creation and extraction | Public Domain / MIT                                    |
-| **Font Awesome Free** *(if included)* | User interface icons                | CC BY 4.0 / SIL OFL / MIT (see Font Awesome licensing) |
+| Library                  | Purpose                             | License              |
+| ------------------------ | ----------------------------------- | -------------------- |
+| **miniz**                | ZIP archive creation and extraction | Public Domain / MIT  |
+| **Font Awesome v7 Free** | User interface icons                | CC BY 4.0            |
 
 All third-party libraries remain the property of their respective authors.
-
----
 
 # Disclaimer
 
