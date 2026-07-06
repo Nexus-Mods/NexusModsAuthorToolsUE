@@ -7,8 +7,8 @@
 class SNexusModsTextBox;
 class STextBlock;
 
-class SNexusModsEditModContent : public SCompoundWidget
-{
+class SNexusModsEditModContent : public SCompoundWidget {
+
 public:
     SLATE_BEGIN_ARGS(SNexusModsEditModContent) {}
         SLATE_ARGUMENT(FGuid, EntryId)

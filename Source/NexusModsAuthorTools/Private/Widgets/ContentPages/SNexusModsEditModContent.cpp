@@ -5,7 +5,7 @@
 #include "IDesktopPlatform.h"
 #include "Misc/Paths.h"
 #include "NexusModsStyle.h"
-#include "Styling/AppStyle.h"
+#include "NexusModsUECompatibility.h"
 #include "Widgets/Layout/SBorder.h"
 #include "Widgets/SBoxPanel.h"
 #include "Widgets/SWindow.h"
@@ -50,12 +50,12 @@ void SNexusModsEditModContent::Construct(const FArguments& InArgs) {
     ChildSlot [
         SNew(SVerticalBox)
             + SVerticalBox::Slot().AutoHeight() [
-                SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FAppStyle::GetBrush("DetailsView.CategoryTop")) [
+                SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.SectionHeaderBackground")) [
                     SNew(SHorizontalBox)
                     + SHorizontalBox::Slot().FillWidth(1.0f).VAlign(VAlign_Center) [
                         SNew(STextBlock)
                             .Text(FText::FromString("Mod Settings"))
-                            .Font(FAppStyle::GetFontStyle("DetailsView.CategoryFontStyle"))
+                            .Font(NexusModsUECompatibility::GetEditorFontStyle("DetailsView.CategoryFontStyle"))
                     ]
                     + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center) [
                         SNew(SNexusModsButton)

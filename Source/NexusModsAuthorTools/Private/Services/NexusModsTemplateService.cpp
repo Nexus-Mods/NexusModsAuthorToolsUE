@@ -20,6 +20,46 @@
 #include "UObject/SavePackage.h"
 #include "IAssetTools.h"
 #include "Logging/TokenizedMessage.h"
+#include "NexusModsUECompatibility.h"
+
+
+namespace {
+
+	FString GetAssetObjectPathString(const FAssetData& AssetData) {
+#if UNREAL_ENGINE_VERSION_AT_LEAST(5, 1)
+		return AssetData.GetObjectPathString();
+#else
+		return AssetData.ObjectPath.ToString();
+#endif
+	}
+
+	bool SavePackageForCurrentEngine(UPackage* Package, UObject* Asset, const FString& PackageFilename) {
+#if UNREAL_ENGINE_VERSION_AT_LEAST(5, 0)
+		FSavePackageArgs SaveArgs;
+		SaveArgs.TopLevelFlags = RF_Public | RF_Standalone;
+		SaveArgs.SaveFlags = SAVE_NoError;
+
+		return UPackage::SavePackage(
+			Package,
+			Asset,
+			*PackageFilename,
+			SaveArgs
+		);
+#else
+		return UPackage::SavePackage(
+			Package,
+			Asset,
+			RF_Public | RF_Standalone,
+			*PackageFilename,
+			GError,
+			nullptr,
+			false,
+			true,
+			SAVE_NoError
+		);
+#endif
+	}
+}
 
 TArray<FNexusModsModTemplate> FNexusModsTemplateService::GetAvailableTemplates() const {
     TArray<FNexusModsModTemplate> Templates;
@@ -417,16 +457,7 @@ bool FNexusModsTemplateService::FinalizeAndSaveBlueprint(UBlueprint* Blueprint, 
         FPackageName::GetAssetPackageExtension()
     );
 
-    FSavePackageArgs SaveArgs;
-    SaveArgs.TopLevelFlags = RF_Public | RF_Standalone;
-    SaveArgs.SaveFlags = SAVE_NoError;
-
-    const bool bSaved = UPackage::SavePackage(
-        Package,
-        Blueprint,
-        *PackageFilename,
-        SaveArgs
-    );
+    const bool bSaved = SavePackageForCurrentEngine(Package, Blueprint, PackageFilename);
 
     if (!bSaved) {
         OutError = TEXT("The ModActor was created, but it could not be saved to disk.");
@@ -450,7 +481,7 @@ FString FNexusModsTemplateService::GetTemplateImageAssetPath(const FString& Temp
 
     for (const FAssetData& TemplateAsset : TemplateAssets) {
         if (TemplateAsset.AssetName == TEXT("TemplateImage") || TemplateAsset.AssetName == TEXT("T_TemplateImage")) {
-            return TemplateAsset.GetObjectPathString();
+            return GetAssetObjectPathString(TemplateAsset);
         }
     }
 
@@ -508,6 +539,7 @@ bool FNexusModsTemplateService::DuplicateTemplateAssets(const FNexusModsModTempl
     FAssetToolsModule& AssetToolsModule = FModuleManager::LoadModuleChecked<FAssetToolsModule>(TEXT("AssetTools"));
     IAssetTools& AssetTools = AssetToolsModule.Get();
 
+#if UNREAL_ENGINE_VERSION_AT_LEAST(5, 1)
     const bool bCopied = AssetTools.AdvancedCopyPackages(
         SourceAndDestPackages,
         true,
@@ -515,6 +547,13 @@ bool FNexusModsTemplateService::DuplicateTemplateAssets(const FNexusModsModTempl
         nullptr,
         EMessageSeverity::Error
     );
+#else
+    const bool bCopied = AssetTools.AdvancedCopyPackages(
+        SourceAndDestPackages,
+        true,
+        false
+    );
+#endif
 
     if (!bCopied) {
         OutError = TEXT("Unable to advanced copy the selected template. The destination may already contain one or more conflicting assets.");
@@ -601,7 +640,7 @@ void FNexusModsTemplateService::RemoveTemplateImageAssetsFromDestination(const F
             continue;
         }
 
-        UEditorAssetLibrary::DeleteAsset(DestinationAsset.GetObjectPathString());
+        UEditorAssetLibrary::DeleteAsset(GetAssetObjectPathString(DestinationAsset));
     }
 }
 
@@ -620,11 +659,7 @@ bool FNexusModsTemplateService::SaveCopiedAssets(const TArray<UObject*>& CopiedA
             FPackageName::GetAssetPackageExtension()
         );
 
-        FSavePackageArgs SaveArgs;
-        SaveArgs.TopLevelFlags = RF_Public | RF_Standalone;
-        SaveArgs.SaveFlags = SAVE_NoError;
-
-        if (!UPackage::SavePackage(Package, CopiedAsset, *PackageFilename, SaveArgs)) {
+        if (!SavePackageForCurrentEngine(Package, CopiedAsset, PackageFilename)) {
             OutError = FString::Printf(TEXT("Unable to save copied asset: %s"), *CopiedAsset->GetName());
             return false;
         }

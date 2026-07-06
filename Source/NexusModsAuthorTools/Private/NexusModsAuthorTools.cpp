@@ -5,6 +5,11 @@
 #include "NexusModsCommands.h"
 #include "ToolMenus.h"
 
+#if UNREAL_ENGINE_VERSION_BELOW(5, 0)
+#include "LevelEditor.h"
+#include "Framework/MultiBox/MultiBoxBuilder.h"
+#endif
+
 #include "Widgets/SWindow.h"
 #include "Framework/Application/SlateApplication.h"
 
@@ -27,20 +32,41 @@ void FNexusModsModule::StartupModule() {
 		FExecuteAction::CreateRaw(this, &FNexusModsModule::PluginButtonClicked),
 		FCanExecuteAction()
 	);
+#if UNREAL_ENGINE_VERSION_AT_LEAST(5, 0)
 	UToolMenus::RegisterStartupCallback(FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FNexusModsModule::RegisterMenus));
+#else
+	RegisterMenus();
+#endif
 }
 
 // This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
 // we call this function before unloading the module.
 void FNexusModsModule::ShutdownModule() {
+#if UNREAL_ENGINE_VERSION_AT_LEAST(5, 0)
 	UToolMenus::UnRegisterStartupCallback(this);
 	UToolMenus::UnregisterOwner(this);
+#else
+	if (FModuleManager::Get().IsModuleLoaded(TEXT("LevelEditor"))) {
+		FLevelEditorModule& LevelEditorModule = FModuleManager::GetModuleChecked<FLevelEditorModule>(TEXT("LevelEditor"));
+
+		if (MenuExtender.IsValid()) {
+			LevelEditorModule.GetMenuExtensibilityManager()->RemoveExtender(MenuExtender);
+			MenuExtender.Reset();
+		}
+
+		if (ToolbarExtender.IsValid()) {
+			LevelEditorModule.GetToolBarExtensibilityManager()->RemoveExtender(ToolbarExtender);
+			ToolbarExtender.Reset();
+		}
+	}
+#endif
 	FNexusModsStyle::Shutdown();
 	FNexusModsCommands::Unregister();
 }
 
 // Owner will be used for cleanup in call to UToolMenus::UnregisterOwner
 void FNexusModsModule::RegisterMenus() {
+#if UNREAL_ENGINE_VERSION_AT_LEAST(5, 0)
 	FToolMenuOwnerScoped OwnerScoped(this);
 	{
 		UToolMenu* Menu = UToolMenus::Get()->ExtendMenu("LevelEditor.MainMenu.Window");
@@ -59,7 +85,44 @@ void FNexusModsModule::RegisterMenus() {
 			}
 		}
 	}
+#else
+	FLevelEditorModule& LevelEditorModule = FModuleManager::LoadModuleChecked<FLevelEditorModule>(TEXT("LevelEditor"));
+
+	MenuExtender = MakeShareable(new FExtender);
+	MenuExtender->AddMenuExtension(
+		"WindowLayout",
+		EExtensionHook::After,
+		PluginCommands,
+		FMenuExtensionDelegate::CreateRaw(this, &FNexusModsModule::AddMenuExtension)
+	);
+	LevelEditorModule.GetMenuExtensibilityManager()->AddExtender(MenuExtender);
+
+	ToolbarExtender = MakeShareable(new FExtender);
+	ToolbarExtender->AddToolBarExtension(
+		"Settings",
+		EExtensionHook::After,
+		PluginCommands,
+		FToolBarExtensionDelegate::CreateRaw(this, &FNexusModsModule::AddToolbarExtension)
+	);
+	LevelEditorModule.GetToolBarExtensibilityManager()->AddExtender(ToolbarExtender);
+#endif
 }
+
+#if UNREAL_ENGINE_VERSION_BELOW(5, 0)
+void FNexusModsModule::AddMenuExtension(FMenuBuilder& Builder) {
+	Builder.AddMenuEntry(FNexusModsCommands::Get().PluginAction);
+}
+
+void FNexusModsModule::AddToolbarExtension(FToolBarBuilder& Builder) {
+	Builder.AddToolBarButton(
+		FNexusModsCommands::Get().PluginAction,
+		NAME_None,
+		TAttribute<FText>(),
+		TAttribute<FText>(),
+		FSlateIcon(FNexusModsStyle::GetStyleSetName(), TEXT("NexusMods.PluginAction.ToolbarUE4"), TEXT("NexusMods.PluginAction.ToolbarUE4.Small"))
+	);
+}
+#endif
 
 void FNexusModsModule::PluginButtonClicked() {
 	if (PluginWindow.IsValid()) {

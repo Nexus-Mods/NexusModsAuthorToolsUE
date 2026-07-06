@@ -18,6 +18,8 @@ public:
 
 	static const FLinearColor NexusOrange;
 	static const FLinearColor NexusOrangeLight;
+	static const FLinearColor WindowBackgroundColor;
+	static const FLinearColor SectionHeaderBackgroundColor;
 
 	static const FMargin SectionHeaderPadding;
 	static const FMargin FormRowLabelPadding;

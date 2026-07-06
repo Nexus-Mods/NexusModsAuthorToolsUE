@@ -1,7 +1,7 @@
 #include "Widgets/SNexusModsMarkdownWindow.h"
 
 #include "NexusModsStyle.h"
-#include "Styling/AppStyle.h"
+#include "NexusModsUECompatibility.h"
 #include "Widgets/Components/SNexusModsMarkdownViewer.h"
 #include "Widgets/Components/SNexusModsTitleBar.h"
 #include "Widgets/Layout/SBorder.h"
@@ -14,7 +14,7 @@ void SNexusModsMarkdownWindow::Construct(const FArguments& InArgs) {
 	ChildSlot [
 		SNew(SBorder)
 		.Padding(0.0f)
-		.BorderImage(FAppStyle::GetBrush("Brushes.Panel")) [
+		.BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.WindowBackground")) [
 			SNew(SVerticalBox)
 			+ SVerticalBox::Slot().AutoHeight() [
 				SNew(SNexusModsTitleBar)

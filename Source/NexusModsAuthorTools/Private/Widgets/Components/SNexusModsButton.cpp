@@ -6,7 +6,7 @@
 #include "Widgets/Text/STextBlock.h"
 #include "Widgets/Layout/SBox.h"
 #include "Widgets/SBoxPanel.h"
-#include "Styling/AppStyle.h"
+#include "NexusModsUECompatibility.h"
 #include "NexusModsStyle.h"
 
 void SNexusModsButton::Construct(const FArguments& InArgs) {
@@ -131,7 +131,7 @@ TSharedRef<SWidget> SNexusModsButton::MakeTextWidget() {
     return
         SAssignNew(TextBlock, STextBlock)
         .Text(Text)
-        .Font(FAppStyle::GetFontStyle("BoldFont"))
+        .Font(NexusModsUECompatibility::GetEditorFontStyle("BoldFont"))
         .ColorAndOpacity(this, &SNexusModsButton::GetTextColor)
         .Visibility(this, &SNexusModsButton::GetTextVisibility);
 }

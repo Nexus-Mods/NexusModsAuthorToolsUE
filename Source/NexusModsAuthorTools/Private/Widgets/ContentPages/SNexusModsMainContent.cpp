@@ -2,11 +2,12 @@
 
 #include "HAL/PlatformProcess.h"
 #include "NexusModsStyle.h"
-#include "Styling/AppStyle.h"
+#include "NexusModsUECompatibility.h"
 #include "Styling/CoreStyle.h"
 #include "Widgets/Images/SImage.h"
 #include "Widgets/Layout/SBorder.h"
 #include "Widgets/Layout/SScrollBox.h"
+#include "Widgets/Layout/SBox.h"
 #include "Widgets/SBoxPanel.h"
 #include "Widgets/Components/SNexusModsButton.h"
 #include "Widgets/Components/SNexusModsIconToggleButton.h"
@@ -43,12 +44,12 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeConfigSection() {
     return
         SNew(SVerticalBox)
         + SVerticalBox::Slot().AutoHeight() [
-            SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FAppStyle::GetBrush("DetailsView.CategoryTop")) [
+            SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.SectionHeaderBackground")) [
                 SNew(SHorizontalBox)
                 + SHorizontalBox::Slot().FillWidth(1.0f).VAlign(VAlign_Center) [
                     SNew(STextBlock)
                         .Text(FText::FromString("Config"))
-                        .Font(FAppStyle::GetFontStyle("DetailsView.CategoryFontStyle"))
+                        .Font(NexusModsUECompatibility::GetEditorFontStyle("DetailsView.CategoryFontStyle"))
                 ]
                 + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center) [
                     SNew(SNexusModsButton)
@@ -105,12 +106,12 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeModListSection() {
     return
         SNew(SVerticalBox)
         + SVerticalBox::Slot().AutoHeight() [
-            SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FAppStyle::GetBrush("DetailsView.CategoryTop")) [
+            SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.SectionHeaderBackground")) [
                 SNew(SHorizontalBox)
                 + SHorizontalBox::Slot().FillWidth(1.0f).VAlign(VAlign_Center) [
                     SNew(STextBlock)
                         .Text(FText::FromString("Mods"))
-                        .Font(FAppStyle::GetFontStyle("DetailsView.CategoryFontStyle"))
+                        .Font(NexusModsUECompatibility::GetEditorFontStyle("DetailsView.CategoryFontStyle"))
                 ]
                 + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(FNexusModsStyle::ButtonGroupPadding) [
                     SNew(SNexusModsButton)
@@ -147,7 +148,7 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeModListSection() {
         ]
         + SVerticalBox::Slot().FillHeight(1.0f).Padding(FNexusModsStyle::ContentPadding) [
             SNew(SScrollBox)
-        .ScrollBarStyle(&FNexusModsStyle::Get().GetWidgetStyle<FScrollBarStyle>("NexusMods.ScrollBar"))
+            .ScrollBarStyle(&FNexusModsStyle::Get().GetWidgetStyle<FScrollBarStyle>("NexusMods.ScrollBar"))
             + SScrollBox::Slot() [
                 SAssignNew(ModsListBox, SVerticalBox)
             ]
@@ -165,7 +166,7 @@ void SNexusModsMainContent::RebuildModList() {
         ModsListBox->AddSlot().AutoHeight().Padding(FNexusModsStyle::FormRowValuePadding) [
             SNew(STextBlock)
                 .Text(FText::FromString("No mods configured yet. Click Add Mod to create one."))
-                .Font(FAppStyle::GetFontStyle("BoldFont"))
+                .Font(NexusModsUECompatibility::GetEditorFontStyle("BoldFont"))
         ];
         return;
     }
@@ -187,7 +188,7 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeModRow(const FNexusModsModUploadS
             + SHorizontalBox::Slot().FillWidth(1.0f).VAlign(VAlign_Center)[
                 SNew(STextBlock)
                     .Text(FText::FromString(RowLabel))
-                    .Font(FAppStyle::GetFontStyle("BoldFont"))
+                    .Font(NexusModsUECompatibility::GetEditorFontStyle("BoldFont"))
             ]
             + SHorizontalBox::Slot().AutoWidth().Padding(FNexusModsStyle::ButtonGroupPadding) [
                 SNew(SNexusModsButton)
@@ -227,11 +228,13 @@ TSharedRef<SWidget> SNexusModsMainContent::MakeModRow(const FNexusModsModUploadS
 
 TSharedRef<SWidget> SNexusModsMainContent::AddNexusSpacer(float Opacity) {
     return
-        SNew(SImage)
-        .Image(FCoreStyle::Get().GetBrush("WhiteBrush"))
-        .ColorAndOpacity(FNexusModsStyle::NexusOrange)
-        .DesiredSizeOverride(FVector2D(0, 1))
-        .RenderOpacity(Opacity);
+        SNew(SBox)
+        .HeightOverride(1.0f) [
+            SNew(SImage)
+            .Image(FCoreStyle::Get().GetBrush("WhiteBrush"))
+            .ColorAndOpacity(FNexusModsStyle::NexusOrange)
+            .RenderOpacity(Opacity)
+        ];
 }
 
 FReply SNexusModsMainContent::OnSaveConfigClicked() {

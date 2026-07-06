@@ -2,7 +2,7 @@
 
 #include "InputCoreTypes.h"
 #include "NexusModsStyle.h"
-#include "Styling/AppStyle.h"
+#include "NexusModsUECompatibility.h"
 #include "Widgets/Images/SImage.h"
 #include "Widgets/Input/SButton.h"
 #include "Widgets/Layout/SBorder.h"
@@ -21,20 +21,24 @@ void SNexusModsTitleBar::Construct(const FArguments& InArgs) {
     ChildSlot [
         SNew(SBorder)
         .Padding(FNexusModsStyle::SectionHeaderPadding)
-        .BorderImage(FAppStyle::GetBrush("Brushes.Recessed")) [
+        .BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.TitleBarBackground")) [
             SNew(SHorizontalBox)
             + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center).Padding(FNexusModsStyle::ButtonGroupPadding) [
                 SNew(SButton)
-                    .ButtonStyle(FAppStyle::Get(), "SimpleButton")
+#if UNREAL_ENGINE_VERSION_AT_LEAST(5, 0)
+                    .ButtonStyle(NexusModsUECompatibility::GetEditorStyle(), "SimpleButton")
+#else
+                    .ButtonStyle(&FNexusModsStyle::Get().GetWidgetStyle<FButtonStyle>("NexusMods.Button.Transparent"))
+#endif
                     .ContentPadding(0.0f)
                     .Cursor(EMouseCursor::Hand)
                     .ToolTipText(FText::FromString("Open Nexus Mods"))
                     .OnClicked(this, &SNexusModsTitleBar::OnNexusModsIconClicked) [
-                        SNew(SImage).Image(FNexusModsStyle::Get().GetBrush("NexusMods.PluginAction"))
+                        SNew(SImage).Image(FNexusModsStyle::Get().GetBrush("NexusMods.PluginAction.TitleBar"))
                     ]
             ]
             + SHorizontalBox::Slot().FillWidth(1.0f).VAlign(VAlign_Center) [
-                SNew(STextBlock).Text(InArgs._Title).Font(FAppStyle::GetFontStyle("BoldFont"))
+                SNew(STextBlock).Text(InArgs._Title).Font(NexusModsUECompatibility::GetEditorFontStyle("BoldFont"))
             ]
             + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center) [
                 SNew(SNexusModsButton)

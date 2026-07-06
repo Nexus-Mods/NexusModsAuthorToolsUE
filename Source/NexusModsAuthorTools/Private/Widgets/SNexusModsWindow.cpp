@@ -9,11 +9,9 @@
 #include "Widgets/ContentPages/SNexusModsUploadProgressContent.h"
 #include "Widgets/Components/SNexusModsTitleBar.h"
 #include "Widgets/SBoxPanel.h"
-#include "Styling/AppStyle.h"
+#include "NexusModsUECompatibility.h"
 #include "NexusModsAuthorTools.h"
-
-//#include "NexusModsStyle.h"
-//FNexusModsStyle::Get().GetBrush("NexusMods.GroupBorderM")
+#include "NexusModsStyle.h"
 
 void SNexusModsWindow::Construct(const FArguments& InArgs) {
     ParentWindow = InArgs._ParentWindow;
@@ -22,7 +20,7 @@ void SNexusModsWindow::Construct(const FArguments& InArgs) {
     DataStore.Load();
 
     ChildSlot [
-        SNew(SBorder).Padding(0).BorderImage(FAppStyle::GetBrush("Brushes.Panel")) [
+        SNew(SBorder).Padding(0).BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.WindowBackground")) [
             SNew(SVerticalBox)
             + SVerticalBox::Slot().AutoHeight() [
                 MakeHeader()

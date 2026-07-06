@@ -3,7 +3,7 @@
 #include "Misc/Paths.h"
 #include "Services/NexusModsArchiveService.h"
 #include "NexusModsStyle.h"
-#include "Styling/AppStyle.h"
+#include "NexusModsUECompatibility.h"
 #include "Widgets/Layout/SBorder.h"
 #include "Widgets/Layout/SBox.h"
 #include "Widgets/Notifications/SProgressBar.h"
@@ -50,12 +50,12 @@ void SNexusModsUploadProgressContent::Construct(const FArguments& InArgs) {
     ChildSlot [
         SNew(SVerticalBox)
             + SVerticalBox::Slot().AutoHeight() [
-                SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FAppStyle::GetBrush("DetailsView.CategoryTop")) [
+                SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.SectionHeaderBackground")) [
                     SNew(SHorizontalBox)
                     + SHorizontalBox::Slot().FillWidth(1.0f).VAlign(VAlign_Center) [
                         SNew(STextBlock)
                             .Text(FText::FromString(FString::Printf(TEXT("Upload %s"), *ModState.DisplayName)))
-                            .Font(FAppStyle::GetFontStyle("DetailsView.CategoryFontStyle"))
+                            .Font(NexusModsUECompatibility::GetEditorFontStyle("DetailsView.CategoryFontStyle"))
                     ]
                     + SHorizontalBox::Slot().AutoWidth().VAlign(VAlign_Center) [
                         SNew(SNexusModsButton)
@@ -182,7 +182,7 @@ TSharedRef<SWidget> SNexusModsUploadProgressContent::MakeDescriptionSection() {
         + SVerticalBox::Slot().AutoHeight().Padding(FNexusModsStyle::FormRowValuePadding) [
             SNew(STextBlock)
             .Text(FText::FromString("Description"))
-            //.Font(FAppStyle::GetFontStyle("DetailsView.CategoryFontStyle"))
+            //.Font(NexusModsUECompatibility::GetEditorFontStyle("DetailsView.CategoryFontStyle"))
         ]
         + SVerticalBox::Slot().AutoHeight().Padding(FNexusModsStyle::FormRowValuePadding) [
             SNew(SBox).HeightOverride(FNexusModsStyle::DescriptionTextBoxHeight) [

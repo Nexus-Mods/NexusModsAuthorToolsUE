@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
+#include "NexusModsUECompatibility.h"
 
 class FToolBarBuilder;
 class FMenuBuilder;
@@ -23,8 +24,19 @@ public:
 private:
 	/** Functions: */
 	void RegisterMenus();
+
+#if UNREAL_ENGINE_VERSION_BELOW(5, 0)
+	void AddMenuExtension(FMenuBuilder& Builder);
+	void AddToolbarExtension(FToolBarBuilder& Builder);
+#endif
+
 	/** Variables: */
 	TSharedPtr<SWindow> PluginWindow;
 	TSharedPtr<class FUICommandList> PluginCommands;
+
+#if UNREAL_ENGINE_VERSION_BELOW(5, 0)
+	TSharedPtr<class FExtender> MenuExtender;
+	TSharedPtr<class FExtender> ToolbarExtender;
+#endif
 
 };

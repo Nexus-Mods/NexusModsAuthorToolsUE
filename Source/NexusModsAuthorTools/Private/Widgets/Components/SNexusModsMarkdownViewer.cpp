@@ -14,7 +14,7 @@
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 #include "Modules/ModuleManager.h"
-#include "Styling/AppStyle.h"
+#include "NexusModsUECompatibility.h"
 #include "Styling/CoreStyle.h"
 #include "Widgets/Images/SImage.h"
 #include "Widgets/Input/SHyperlink.h"
@@ -58,7 +58,7 @@ namespace NexusModsMarkdownViewer {
 
         FString RelativePath = NormalizedPath;
         if (RelativePath.StartsWith(TEXT("Resources/"), ESearchCase::IgnoreCase)) {
-            RelativePath.RightChopInline(10, false);
+            RelativePath = RelativePath.RightChop(10);
         }
 
         const FString ResourceImagePath = ResourcesPath / RelativePath;
@@ -190,7 +190,7 @@ private:
         if (ContentBox.IsValid()) {
             ContentBox->SetContent(
                 SNew(SBorder)
-                .BorderImage(FAppStyle::GetBrush("Brushes.Recessed"))
+                .BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.BaseBorder"))
                 .Padding(6.0f) [
                     SNew(SImage)
                     .Image(ImageBrush.Get())
@@ -202,7 +202,7 @@ private:
     TSharedRef<SWidget> BuildLoadingWidget() const {
         return SNew(STextBlock)
             .Text(FText::FromString(AltText.IsEmpty() ? FString::Printf(TEXT("Loading image: %s"), *ImageSource) : AltText))
-            .Font(FAppStyle::GetFontStyle("NormalFont"))
+            .Font(NexusModsUECompatibility::GetEditorFontStyle("NormalFont"))
             .ColorAndOpacity(NexusModsMarkdownViewer::MutedTextColor);
     }
 
@@ -211,7 +211,7 @@ private:
             ContentBox->SetContent(
                 SNew(STextBlock)
                 .Text(FText::FromString(StatusText))
-                .Font(FAppStyle::GetFontStyle("NormalFont"))
+                .Font(NexusModsUECompatibility::GetEditorFontStyle("NormalFont"))
                 .ColorAndOpacity(NexusModsMarkdownViewer::MutedTextColor)
             );
         }
@@ -236,7 +236,7 @@ void SNexusModsMarkdownViewer::Construct(const FArguments& InArgs) {
     MaxImageSize = InArgs._MaxImageSize;
 
     ChildSlot [
-        SNew(SBorder).BorderImage(FAppStyle::GetBrush("Brushes.Panel")) [
+        SNew(SBorder).BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.BaseFill")) [
             SNew(SScrollBox)
             .ScrollBarStyle(&FNexusModsStyle::Get().GetWidgetStyle<FScrollBarStyle>("NexusMods.ScrollBar"))
             + SScrollBox::Slot().Padding(ContentPadding) [
@@ -503,7 +503,7 @@ TSharedRef<SWidget> SNexusModsMarkdownViewer::BuildCodeBlockWidget(const FString
     using namespace NexusModsMarkdownViewer;
 
     return SNew(SBorder)
-        .BorderImage(FAppStyle::GetBrush("Brushes.Recessed"))
+        .BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.BaseBorder"))
         .BorderBackgroundColor(CodeBackgroundColor)
         .Padding(10.0f) [
             SNew(STextBlock)
@@ -520,7 +520,7 @@ TSharedRef<SWidget> SNexusModsMarkdownViewer::BuildHorizontalRuleWidget() const 
     return SNew(SBox)
         .HeightOverride(1.0f) [
             SNew(SBorder)
-            .BorderImage(FAppStyle::GetBrush("WhiteBrush"))
+            .BorderImage(FCoreStyle::Get().GetBrush("WhiteBrush"))
             .BorderBackgroundColor(RuleColor)
         ];
 }
@@ -617,13 +617,13 @@ bool SNexusModsMarkdownViewer::TryParseNumberedBullet(const FString& TrimmedLine
 }
 
 FSlateFontInfo SNexusModsMarkdownViewer::GetRegularFont(float Size) const {
-    FSlateFontInfo Font = FAppStyle::GetFontStyle("NormalFont");
+    FSlateFontInfo Font = NexusModsUECompatibility::GetEditorFontStyle("NormalFont");
     Font.Size = Size;
     return Font;
 }
 
 FSlateFontInfo SNexusModsMarkdownViewer::GetBoldFont(float Size) const {
-    FSlateFontInfo Font = FAppStyle::GetFontStyle("NormalFontBold");
+    FSlateFontInfo Font = NexusModsUECompatibility::GetEditorFontStyle("NormalFontBold");
     Font.Size = Size;
     return Font;
 }

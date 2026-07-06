@@ -2,7 +2,7 @@
 
 #include "NexusModsStyle.h"
 #include "InputCoreTypes.h"
-#include "Styling/AppStyle.h"
+#include "NexusModsUECompatibility.h"
 #include "Engine/Texture2D.h"
 #include "Widgets/Components/SNexusModsButton.h"
 #include "Widgets/Components/SNexusModsTextBox.h"
@@ -66,10 +66,10 @@ TSharedRef<SWidget> SNexusModsCreateFromTemplateContent::MakeTemplateSelectionSe
     return
         SNew(SVerticalBox)
         + SVerticalBox::Slot().AutoHeight() [
-            SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FAppStyle::GetBrush("DetailsView.CategoryTop")) [
+            SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.SectionHeaderBackground")) [
                 SNew(STextBlock)
                     .Text(FText::FromString("Select Template"))
-                    .Font(FAppStyle::GetFontStyle("DetailsView.CategoryFontStyle"))
+                    .Font(NexusModsUECompatibility::GetEditorFontStyle("DetailsView.CategoryFontStyle"))
             ]
         ]
         + SVerticalBox::Slot().FillHeight(1.0f).Padding(FNexusModsStyle::ContentPadding) [
@@ -97,12 +97,16 @@ TSharedRef<SWidget> SNexusModsCreateFromTemplateContent::MakeTemplateGrid() {
 TSharedRef<SWidget> SNexusModsCreateFromTemplateContent::MakeTemplateCard(const FNexusModsModTemplate& Template, int32 TemplateIndex) {
     return
         SNew(SButton)
-            .ButtonStyle(FAppStyle::Get(), "SimpleButton")
+#if UNREAL_ENGINE_VERSION_AT_LEAST(5, 0)
+            .ButtonStyle(NexusModsUECompatibility::GetEditorStyle(), "SimpleButton")
+#else
+            .ButtonStyle(&FNexusModsStyle::Get().GetWidgetStyle<FButtonStyle>("NexusMods.Button.Transparent"))
+#endif
             .ContentPadding(0)
             .Cursor(EMouseCursor::Hand)
             .ToolTipText(Template.Description)
             .OnClicked(this, &SNexusModsCreateFromTemplateContent::OnTemplateClicked, TemplateIndex) [
-                SNew(SBorder).Padding(FNexusModsStyle::ContentPadding).BorderImage(FAppStyle::GetBrush("Brushes.Panel")) [
+                SNew(SBorder).Padding(FNexusModsStyle::ContentPadding).BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.TemplateCardBackground")) [
                     SNew(SVerticalBox)
                     + SVerticalBox::Slot().AutoHeight().HAlign(HAlign_Center).Padding(FNexusModsStyle::FormRowValuePadding) [
                         MakeTemplateIconWidget(Template)
@@ -110,17 +114,19 @@ TSharedRef<SWidget> SNexusModsCreateFromTemplateContent::MakeTemplateCard(const 
                     + SVerticalBox::Slot().AutoHeight() [
                         SNew(STextBlock)
                             .Text(Template.DisplayName)
-                            .Font(FAppStyle::GetFontStyle("DetailsView.CategoryFontStyle"))
+                            .Font(NexusModsUECompatibility::GetEditorFontStyle("DetailsView.CategoryFontStyle"))
+                            .ColorAndOpacity(FSlateColor(FLinearColor::White))
                     ]
                     + SVerticalBox::Slot().AutoHeight().Padding(FNexusModsStyle::FormRowValuePadding) [
                         SNew(STextBlock)
                             .Text(Template.Description)
                             .AutoWrapText(true)
+                            .ColorAndOpacity(FSlateColor(FLinearColor::White))
                     ]
                     + SVerticalBox::Slot().AutoHeight().Padding(FNexusModsStyle::FormRowValuePadding) [
                         SNew(STextBlock)
                             .Text(Template.IsBuiltIn() ? FText::FromString("Built-in Template") : FText::FromString("Project Template"))
-                            .ColorAndOpacity(Template.IsBuiltIn() ? FSlateColor(FNexusModsStyle::NexusOrangeLight) : FSlateColor::UseForeground())
+                            .ColorAndOpacity(Template.IsBuiltIn() ? FSlateColor(FNexusModsStyle::NexusOrangeLight) : FSlateColor(FLinearColor::White))
                     ]
                 ]
             ];
@@ -186,10 +192,10 @@ TSharedRef<SWidget> SNexusModsCreateFromTemplateContent::MakeTemplateDetailsSect
         + SVerticalBox::Slot().AutoHeight().Padding(FNexusModsStyle::ContentPadding) [
             SNew(SVerticalBox)
             + SVerticalBox::Slot().AutoHeight() [
-                SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FAppStyle::GetBrush("DetailsView.CategoryTop")) [
+                SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.SectionHeaderBackground")) [
                     SNew(STextBlock)
                         .Text(FText::FromString("Description"))
-                        .Font(FAppStyle::GetFontStyle("DetailsView.CategoryFontStyle"))
+                        .Font(NexusModsUECompatibility::GetEditorFontStyle("DetailsView.CategoryFontStyle"))
                 ]
             ]
             + SVerticalBox::Slot().AutoHeight() [
@@ -213,12 +219,12 @@ TSharedRef<SWidget> SNexusModsCreateFromTemplateContent::MakeTemplateDetailsSect
 
 TSharedRef<SWidget> SNexusModsCreateFromTemplateContent::MakeDetailsHeader() {
     return
-        SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FAppStyle::GetBrush("DetailsView.CategoryTop")) [
+        SNew(SBorder).Padding(FNexusModsStyle::SectionHeaderPadding).BorderImage(FNexusModsStyle::Get().GetBrush("NexusMods.SectionHeaderBackground")) [
             SNew(SHorizontalBox)
             + SHorizontalBox::Slot().FillWidth(1.0f).VAlign(VAlign_Center) [
                 SNew(STextBlock)
                     .Text(this, &SNexusModsCreateFromTemplateContent::GetDetailsHeaderText)
-                    .Font(FAppStyle::GetFontStyle("DetailsView.CategoryFontStyle"))
+                    .Font(NexusModsUECompatibility::GetEditorFontStyle("DetailsView.CategoryFontStyle"))
             ]
             + SHorizontalBox::Slot().AutoWidth().Padding(FNexusModsStyle::ButtonGroupPadding) [
                 SNew(SNexusModsButton)

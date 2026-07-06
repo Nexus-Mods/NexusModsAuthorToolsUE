@@ -5,7 +5,7 @@
 #define LOCTEXT_NAMESPACE "FNexusModsModule"
 
 void FNexusModsCommands::RegisterCommands() {
-	UI_COMMAND(PluginAction, "Nexus Mods Author Tools", "Open Nexus Mods Author Tools", EUserInterfaceActionType::Button, FInputChord());
+	UI_COMMAND(PluginAction, "Mod Tools", "Open Nexus Mods Author Tools", EUserInterfaceActionType::Button, FInputChord());
 }
 
 #undef LOCTEXT_NAMESPACE

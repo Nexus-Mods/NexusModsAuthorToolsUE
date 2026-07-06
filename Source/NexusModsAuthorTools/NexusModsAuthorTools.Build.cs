@@ -22,7 +22,6 @@ public class NexusModsAuthorTools : ModuleRules {
 		PrivateDependencyModuleNames.AddRange(new string[] {
 			"Projects",
 			"InputCore",
-			"EditorFramework",
 			"UnrealEd",
 			"ToolMenus",
 			"CoreUObject",
@@ -39,7 +38,16 @@ public class NexusModsAuthorTools : ModuleRules {
 			"BlueprintGraph",
 			"KismetCompiler",
 			"EditorScriptingUtilities",
+			"LevelEditor",
 		});
+
+		bool bIsUE5OrLater = Target.Version.MajorVersion >= 5;
+		if (bIsUE5OrLater) {
+			PrivateDependencyModuleNames.Add("EditorFramework");
+		} else {
+			PrivateDependencyModuleNames.Add("EditorStyle");
+		}
+
 		// ... add any modules that your module loads dynamically here ...
 		DynamicallyLoadedModuleNames.AddRange(new string[]{
 
