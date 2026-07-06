@@ -204,7 +204,7 @@ This project includes the following third-party libraries and assets:
 
 | Library | Purpose | License | Project |
 |---------|---------|---------|---------|
-| **Font Awesome 7** | User interface icons | CC BY 4.0 | https://fontawesome.com |
+| **FontAwesome** | User interface icons | CC BY 4.0 | https://fontawesome.com |
 | **miniz** | ZIP archive creation and extraction | MIT / Public Domain | https://github.com/richgel999/miniz |
 
 ---
