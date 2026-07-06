@@ -12,6 +12,8 @@
 
 </div>
 
+---
+
 # Project Goals
 
 Nexus Mods Author Tools is an open-source Unreal Engine plugin designed to simplify the process of creating, managing, packaging, and publishing game mods to Nexus Mods. The aim is to reduce the technical barriers involved in creating Unreal Engine game mods by providing a consistent, integrated workflow directly within the Unreal Editor. 
@@ -24,14 +26,24 @@ Rather than requiring authors to switch between multiple external tools, the plu
 
 Current capabilities include:
 
-- Integrated Nexus Mods authentication and upload support
+- Native Unreal Editor integration
+- Integrated Nexus Mods upload support
 - Built-in mod template management
 - Mod archive creation prior to upload
-- Native Unreal Editor integration
 - Cross-version support for Unreal Engine 4 and 5
 - Extensible framework for future authoring tools
 
-The plugin is actively developed, with additional features being added over time.
+---
+
+# Roadmap
+
+Planned areas of development include:
+
+- Markdown rendering for in-editor help, documentation and release notes
+- Additional modding workflows and project templates
+- Improved validation and diagnostics
+- Expanded editor utilities
+- Improved documentation
 
 ---
 
@@ -89,11 +101,10 @@ Building from source is only required if you wish to contribute to the project o
 
 ## Building
 
-1. Clone this repository.
-2. Place it inside your project's `Plugins` directory.
-3. Regenerate project files if required.
-4. Build the project using Visual Studio or Unreal Build Tool.
-5. Launch Unreal Engine.
+1. Clone this repository inside your project's `Plugins` directory.
+2. Regenerate project files if required.
+3. Build the project using Visual Studio or Unreal Build Tool.
+4. Launch Unreal Engine.
 
 ---
 
@@ -133,18 +144,6 @@ This includes:
 - GitHub release behaviour
 - Build output options
 
----
-
-# Roadmap
-
-Planned areas of development include:
-
-- Markdown rendering for in-editor help, documentation and release notes
-- Additional modding workflows
-- Improved validation and diagnostics
-- Additional project templates
-- Expanded editor utilities
-- Improved documentation
 
 ---
 
@@ -205,8 +204,8 @@ This project includes the following third-party libraries and assets:
 
 | Library | Purpose | License | Project |
 |---------|---------|---------|---------|
+| **Font Awesome 7** | User interface icons | CC BY 4.0 | https://fontawesome.com |
 | **miniz** | ZIP archive creation and extraction | MIT / Public Domain | https://github.com/richgel999/miniz |
-| **Font Awesome Free 7** | User interface icons | CC BY 4.0 | https://fontawesome.com |
 
 ---
 
