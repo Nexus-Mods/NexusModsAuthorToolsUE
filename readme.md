@@ -4,11 +4,16 @@ Nexus Mods Author Tools is an open-source Unreal Engine plugin designed to simpl
 
 Rather than requiring authors to switch between multiple external tools, the plugin integrates common mod development workflows directly into the Unreal Editor, helping both new and experienced creators spend less time on project setup and more time building content.
 
-[![Nexus Mods](https://img.shields.io/badge/Nexus_Mods-Author_Tool-EF7D00?style=for-the-badge)](https://www.nexusmods.com/)
+<div align="center">
+
 ![Status](https://img.shields.io/badge/Status-Active_Development-2EA043?style=for-the-badge)
 [![Version](https://img.shields.io/badge/Version-v0.1-3B82F6?style=for-the-badge)](https://github.com/Nexus-Mods/NexusModsAuthorTools/releases)
 [![License](https://img.shields.io/badge/License-Custom-6B7280?style=for-the-badge)](/LICENSE)
 ![Compatibility](https://img.shields.io/badge/Unreal_Engine-4.26_→_5.8-8B5CF6?style=for-the-badge)
+
+</div>
+
+[![Nexus Mods](https://img.shields.io/badge/Nexus_Mods-Author_Tool-EF7D00?style=for-the-badge)](https://www.nexusmods.com/)
 
 <h1>Header Test</h1>
 
