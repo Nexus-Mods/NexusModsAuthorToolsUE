@@ -1,121 +1,152 @@
-# Nexus Mods Author Tools
-
-Nexus Mods Author Tools is an open-source Unreal Engine plugin designed to simplify the process of creating, managing, packaging, and publishing game mods to Nexus Mods.
-
-Rather than requiring authors to switch between multiple external tools, the plugin integrates common mod development workflows directly into the Unreal Editor, helping both new and experienced creators spend less time on project setup and more time building content.
+# Nexus Mods: Unreal Engine Author Tools
 
 <div align="center">
+    <img src=".github/Images/AuthorModToolsUE.png" style="margin-top: 28px;">
+</div>
+<div align="center">
 
-<img alt="Project Status" src="https://img.shields.io/badge/Status-Active_Development-2EA043?style=for-the-badge" />
-<a href="https://github.com/Nexus-Mods/NexusModsAuthorTools/releases" aria-label="Latest Release">
-    <img alt="Latest Release" src="https://img.shields.io/github/v/release/Nexus-Mods/NexusModsAuthorToolsUE?style=for-the-badge" />
-</a>
-<a href="LICENSE" aria-label="License">
-    <img alt="Project License" src="https://img.shields.io/badge/License-Custom-6B7280?style=for-the-badge" />
-</a>
-<img alt="Supported Unreal Engine Versions" src="https://img.shields.io/badge/Unreal_Engine-4.26_→_5.8-8B5CF6?style=for-the-badge" />
+[![Status](https://img.shields.io/badge/Status-Active_Development-2EA043?style=for-the-badge)](https://github.com/Nexus-Mods/NexusModsAuthorToolsUE)
+[![Version](https://img.shields.io/github/v/release/Nexus-Mods/NexusModsAuthorToolsUE?label=Version&style=for-the-badge)](https://github.com/Nexus-Mods/NexusModsAuthorToolsUE/releases)
+[![License](https://img.shields.io/badge/License-Custom-6B7280?style=for-the-badge)](/LICENSE)
+[![Compatibility](https://img.shields.io/badge/Unreal_Engine-4.26_→_5.8-8B5CF6?style=for-the-badge)](#supported-engine-versions)
 
 </div>
 
+# Project Goals
 
-<h1>Header Test</h1>
+Nexus Mods Author Tools is an open-source Unreal Engine plugin designed to simplify the process of creating, managing, packaging, and publishing game mods to Nexus Mods. The aim is to reduce the technical barriers involved in creating Unreal Engine game mods by providing a consistent, integrated workflow directly within the Unreal Editor. 
+
+Rather than requiring authors to switch between multiple external tools, the plugin integrates common mod development workflows directly into the Unreal Editor, helping both new and experienced creators spend less time on project setup and more time building content. 
+
+---
 
 # Features
 
 Current capabilities include:
 
-* Integrated Nexus Mods Upload API support
-* Built-in mod template management
-* Mod archive creation before upload
-* Unreal Editor toolbar and window integration
-* Extensible framework for future authoring tools
+- Integrated Nexus Mods authentication and upload support
+- Built-in mod template management
+- Mod archive creation prior to upload
+- Native Unreal Editor integration
+- Cross-version support for Unreal Engine 4 and 5
+- Extensible framework for future authoring tools
 
-The plugin is actively developed and additional functionality will continue to be added over time.
+The plugin is actively developed, with additional features being added over time.
 
-# Coming Soon
-
-Planned areas of development include:
-
-* Markdown rendering for in-editor help, documentation, and release notes
-* Additional mod packaging & modding workflows
-* Improved validation and diagnostics
-* Additional project templates
-* Expanded editor utilities
-* Improved documentation
-
+---
 
 # Supported Engine Versions
 
-The plugin currently supports:
+The plugin currently supports the following Unreal Engine versions:
 
-* Unreal Engine 4.26
-* Unreal Engine 4.27
-* Unreal Engine 5.0
-* Unreal Engine 5.1
-* Unreal Engine 5.2
-* Unreal Engine 5.3
-* Unreal Engine 5.4
-* Unreal Engine 5.5
-* Unreal Engine 5.6
-* Unreal Engine 5.7
-* Unreal Engine 5.8
+- Unreal Engine 4.26
+- Unreal Engine 4.27
+- Unreal Engine 5.0
+- Unreal Engine 5.1
+- Unreal Engine 5.2
+- Unreal Engine 5.3
+- Unreal Engine 5.4
+- Unreal Engine 5.5
+- Unreal Engine 5.6
+- Unreal Engine 5.7
+- Unreal Engine 5.8
 
 Support for additional engine versions may be added in future releases.
 
+---
 
 # Installation
 
-1. Clone or download this repository.
-2. Copy the plugin into your project's `Plugins` directory.
+Pre-built plugin packages are available from the project's **GitHub Releases** page.
+
+1. Download the package matching your Unreal Engine version.
+2. Extract the archive.
+3. Copy the `NexusModsAuthorTools` folder into your project's `Plugins` directory.
+
+Example:
+
+```text
+MyProject/
+└── Plugins/
+    └── NexusModsAuthorTools/
+```
+
+4. Launch Unreal Engine.
+5. Enable the plugin if prompted.
+6. Restart the editor if required.
+
+---
+
+# Building From Source
+
+Building from source is only required if you wish to contribute to the project or make your own modifications.
+
+## Requirements
+
+- Unreal Engine 4.26–5.8
+- Visual Studio 2019 or newer
+- Git
+
+## Building
+
+1. Clone this repository.
+2. Place it inside your project's `Plugins` directory.
 3. Regenerate project files if required.
-4. Compile the project using Visual Studio or Unreal Build Tool.
-5. Open your project in Unreal Engine.
-6. Enable the plugin if prompted.
+4. Build the project using Visual Studio or Unreal Build Tool.
+5. Launch Unreal Engine.
 
-# Building
+---
 
-The repository includes helper scripts for building and releasing the plugin across multiple Unreal Engine versions.
+# Release Tooling
 
-Available build actions include:
+The repository includes optional PowerShell scripts used to automate building and releasing the plugin across multiple Unreal Engine versions.
+
+## Available Actions
 
 1. Build Packages
 2. Release Packages
 3. Build then Release
 4. Exit
 
-Build output is organised into the following directories:
+## Output Directories
 
-| Folder         | Purpose                          |
-| -------------- | -------------------------------- |
+| Folder | Purpose |
+|---------|---------|
 | `Output/Build` | Temporary packaged plugin builds |
-| `Output/Dist`  | Final distributable ZIP archives |
-| `Output/Logs`  | Build and release logs           |
+| `Output/Dist` | Final distributable ZIP archives |
+| `Output/Logs` | Build and release logs |
 
-Build configuration is controlled through:
+## Configuration
 
-```
+Build behaviour can be configured through:
+
+```text
 Scripts/BuildConfig.ps1
 ```
 
-This allows configuration of:
+This includes:
 
-* Unreal Engine installation paths
-* Target platforms
-* Plugin information
-* Archive naming
-* GitHub release behaviour
-* Build output options
+- Unreal Engine installation paths
+- Target platforms
+- Plugin information
+- Archive naming
+- GitHub release behaviour
+- Build output options
 
-# Project Structure
+---
 
-The project is organised into several primary systems:
+# Roadmap
 
-* **API Services** — communication with Nexus Mods services.
-* **Editor UI** — custom Slate widgets and windows.
-* **Template System** — creation and management of mod templates.
-* **Archive Services** — packaging and distribution.
-* **Build Scripts** — automated multi-version packaging and release tooling.
-* **Compatibility Layer** — shared Unreal Engine version abstraction supporting UE4 and UE5.
+Planned areas of development include:
+
+- Markdown rendering for in-editor help, documentation and release notes
+- Additional modding workflows
+- Improved validation and diagnostics
+- Additional project templates
+- Expanded editor utilities
+- Improved documentation
+
+---
 
 # Contributing
 
@@ -123,55 +154,61 @@ Contributions are welcome.
 
 If you would like to contribute:
 
-* Report bugs through GitHub Issues.
-* Suggest new features or improvements.
-* Submit Pull Requests for fixes or enhancements.
-* Follow the existing project coding style and conventions.
+- Report bugs through GitHub Issues.
+- Suggest new features or improvements.
+- Submit Pull Requests.
+- Follow the existing project architecture and coding style.
 
-Please keep changes focused, well documented, and consistent with the project's architecture.
+Please keep contributions focused, well documented, and consistent with the project's overall design.
+
+---
 
 # Troubleshooting
 
-### The plugin does not appear inside Unreal Editor
+## The plugin does not appear inside Unreal Editor
 
-* Verify that the plugin has been compiled successfully.
-* Ensure it is located inside the project's `Plugins` directory.
-* Confirm that the plugin is enabled in the Plugins window.
+- Verify the plugin is located inside your project's `Plugins` directory.
+- Ensure the plugin has been enabled.
+- Confirm you downloaded the package matching your Unreal Engine version.
 
-### Build scripts cannot find Unreal Engine
+## Build scripts cannot find Unreal Engine
 
-Verify the engine paths configured in:
+Verify the engine installation paths configured in:
 
-```
+```text
 Scripts/BuildConfig.ps1
 ```
 
-### Packaging fails
+## Packaging fails
 
-Check the logs inside:
+Check the logs located in:
 
-```
+```text
 Output/Logs
 ```
 
 for detailed diagnostics.
 
+---
+
 # License
 
-This project is licensed under the terms described in the accompanying LICENSE file.
+This project is licensed under the terms described in the accompanying [LICENSE](LICENSE) file.
 
-While contributions are welcome, the project is intended to support the Nexus Mods ecosystem and may not be used to develop competing commercial mod distribution services as described in the accompanying license.
+While contributions are welcome, the project is intended to support the Nexus Mods ecosystem and may not be used to develop competing commercial mod distribution services as described in the license.
+
+---
 
 # Third-Party Libraries
 
-This project makes use of several third-party libraries:
+This project includes the following third-party libraries and assets:
 
-| Library                  | Purpose                             | License              |
-| ------------------------ | ----------------------------------- | -------------------- |
-| **miniz**                | ZIP archive creation and extraction | Public Domain / MIT  |
-| **Font Awesome v7 Free** | User interface icons                | CC BY 4.0            |
+| Library | Purpose | License | Project |
+|---------|---------|---------|---------|
+| **miniz** | ZIP archive creation and extraction | MIT / Public Domain | https://github.com/richgel999/miniz |
+| **Font Awesome Free 7** | User interface icons | CC BY 4.0 | https://fontawesome.com |
 
-All third-party libraries remain the property of their respective authors.
+---
 
 # Disclaimer
 
