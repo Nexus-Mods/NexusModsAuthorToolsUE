@@ -1,70 +1,199 @@
 # Nexus Mods Author Tools
 
-Nexus Mods Author Tools is an Unreal Engine plugin designed to simplify the process of creating, packaging, and distributing mods for games that support the Nexus Mods ecosystem.
+Nexus Mods Author Tools is an open-source Unreal Engine plugin designed to simplify the process of creating, managing, packaging, and publishing game mods for the Nexus Mods ecosystem.
 
-The project aims to reduce the technical barriers that new mod authors face by providing a consistent, user-friendly set of tools directly within the Unreal Editor.
+Rather than requiring authors to switch between multiple external tools, the plugin integrates common mod development workflows directly into the Unreal Editor, helping both new and experienced creators spend less time on project setup and more time building content.
 
 > **Status:** Active development
 
 ---
 
-## Features
+# Features
 
 Current capabilities include:
 
-- Integrated Nexus Mods Upload API within Unreal Engine
-- Predefined/User created mod template system 
-- Extensible framework for future tooling
+* Integrated Nexus Mods Upload API support
+* Built-in mod template management
+* Mod archive creation before upload
+* Unreal Editor toolbar and window integration
+* Extensible framework for future authoring tools
 
-Additional features will continue to be added as the project evolves.
+The plugin is actively developed and additional functionality will continue to be added over time.
+
+## Coming Soon
+
+Features Not fully implemented include:
+
+* Markdown rendering for in-editor help, documentation, and release notes
+* Packaging mod files and copying them to game directory
+
 
 ---
 
-## Building
+# Supported Engine Versions
 
-This plugin currently targets Unreal Engine 5.4.
+The plugin currently supports:
 
-1. Clone this repository into your project's `Plugins` directory.
-2. Regenerate project files if required.
-3. Open the project in Unreal Engine.
-4. Build the plugin from Visual Studio or directly through Unreal Engine.
+* Unreal Engine 4.26
+* Unreal Engine 4.27
+* Unreal Engine 5.0
+* Unreal Engine 5.1
+* Unreal Engine 5.2
+* Unreal Engine 5.3
+* Unreal Engine 5.4
+* Unreal Engine 5.5
+* Unreal Engine 5.6
+* Unreal Engine 5.7
+* Unreal Engine 5.8
+
+Support for additional engine versions may be added in future releases.
 
 ---
 
-## Contributing
+# Installation
+
+1. Clone or download this repository.
+2. Copy the plugin into your project's `Plugins` directory.
+3. Regenerate project files if required.
+4. Compile the project using Visual Studio or Unreal Build Tool.
+5. Open your project in Unreal Engine.
+6. Enable the plugin if prompted.
+
+---
+
+# Building
+
+The repository includes helper scripts for building and releasing the plugin across multiple Unreal Engine versions.
+
+Available build actions include:
+
+1. Build Packages
+2. Release Packages
+3. Build then Release
+4. Exit
+
+Build output is organised into the following directories:
+
+| Folder         | Purpose                          |
+| -------------- | -------------------------------- |
+| `Output/Build` | Temporary packaged plugin builds |
+| `Output/Dist`  | Final distributable ZIP archives |
+| `Output/Logs`  | Build and release logs           |
+
+Build configuration is controlled through:
+
+```
+Scripts/BuildConfig.ps1
+```
+
+This allows configuration of:
+
+* Unreal Engine installation paths
+* Target platforms
+* Plugin information
+* Archive naming
+* GitHub release behaviour
+* Build output options
+
+---
+
+# Project Structure
+
+The project is organised into several primary systems:
+
+* **API Services** — communication with Nexus Mods services.
+* **Editor UI** — custom Slate widgets and windows.
+* **Template System** — creation and management of mod templates.
+* **Archive Services** — packaging and distribution.
+* **Build Scripts** — automated multi-version packaging and release tooling.
+* **Compatibility Layer** — shared Unreal Engine version abstraction supporting UE4 and UE5.
+
+---
+
+
+# Contributing
 
 Contributions are welcome.
 
-If you'd like to report a bug, suggest a feature, or submit improvements, please open an Issue or Pull Request.
+If you would like to contribute:
 
-Please keep contributions focused, well documented, and consistent with the existing code style.
+* Report bugs through GitHub Issues.
+* Suggest new features or improvements.
+* Submit Pull Requests for fixes or enhancements.
+* Follow the existing project coding style and conventions.
+
+Please keep changes focused, well documented, and consistent with the project's architecture.
 
 ---
 
-## Roadmap
+# Roadmap
 
 Planned areas of development include:
 
-- Additional packaging workflows
-- Improved validation and diagnostics
-- Better project templates
-- Enhanced metadata editing
-- Expanded editor utilities
-- Improved documentation
-- Support for additional Unreal Engine modding workflows
+* Additional packaging workflows
+* Improved validation and diagnostics
+* Enhanced metadata editing
+* Additional project templates
+* Expanded editor utilities
+* Improved documentation
+* Better onboarding for new mod authors
+* Additional Unreal Engine modding workflows
 
 ---
 
-## License
+# Troubleshooting
+
+### The plugin does not appear inside Unreal Editor
+
+* Verify that the plugin has been compiled successfully.
+* Ensure it is located inside the project's `Plugins` directory.
+* Confirm that the plugin is enabled in the Plugins window.
+
+### Build scripts cannot find Unreal Engine
+
+Verify the engine paths configured in:
+
+```
+Scripts/BuildConfig.ps1
+```
+
+### Packaging fails
+
+Check the logs inside:
+
+```
+Output/Logs
+```
+
+for detailed diagnostics.
+
+---
+
+# License
 
 This project is licensed under the terms described in the accompanying LICENSE file.
 
-Please note that while contributions are welcome, the project is intended to support the Nexus Mods ecosystem and may not be used for competing commercial services without permission.
+While contributions are welcome, the project is intended to support the Nexus Mods ecosystem and may not be used to develop competing commercial mod distribution services as described in the accompanying license.
 
 ---
 
-## Disclaimer
+# Third-Party Libraries
 
-This project is developed by Nexus Mods to improve the experience of creating mods for Unreal Engine games.
+This project makes use of several third-party libraries:
 
-It is not affiliated with or endorsed by Epic Games.
+| Library                               | Purpose                             | License                                                |
+| ------------------------------------- | ----------------------------------- | ------------------------------------------------------ |
+| **miniz**                             | ZIP archive creation and extraction | Public Domain / MIT                                    |
+| **Font Awesome Free** *(if included)* | User interface icons                | CC BY 4.0 / SIL OFL / MIT (see Font Awesome licensing) |
+
+All third-party libraries remain the property of their respective authors.
+
+---
+
+# Disclaimer
+
+Nexus Mods Author Tools is developed by Nexus Mods to improve the Unreal Engine mod authoring experience.
+
+This project is not affiliated with or endorsed by Epic Games.
+
+Unreal Engine is a trademark or registered trademark of Epic Games, Inc.
