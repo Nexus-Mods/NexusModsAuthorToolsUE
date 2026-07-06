@@ -203,7 +203,7 @@ While contributions are welcome, the project is intended to support the Nexus Mo
 This project includes the following third-party libraries and assets:
 
 | Library/Resource | Purpose | License |
-|---------|---------|---------|---------|
+|---------|---------|---------|
 | [**FontAwesome**](https://fontawesome.com) | User interface icons | CC BY 4.0 |
 | [**miniz**](https://github.com/richgel999/miniz) | ZIP archive creation and extraction | MIT / Public Domain |
 
