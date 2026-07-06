@@ -21,8 +21,9 @@ Saved/
 
 # Build artifacts
 Config/FilterPlugin.ini
-Build/
-Dist/
+Output/
+*.zip
+*.log
 
 # Logs
 *.log
