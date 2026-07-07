@@ -109,6 +109,18 @@ After you are happy with the name, click `Create Mod`, and the plugin will popul
 ![Templates2](/.github/Images/Templates2.png)
 
 
+## Creating New Templates
+
+Within your projects `Content` folder (inside Unreal Engine). If you create a new folder named `ModTemplates`, and then another subfolder within that named `Template01` (or whatever you want your template to be named), then the plugin will automatically consider the files within that folder as a custom template. 
+
+![NewTemplates](/.github/Images/NewTemplates.png)
+
+When this template is selected from the plugin interface's `Use Mod Template` button, all files (except `TemplateImage` or `T_TemplateImage`) will be copied into your desired location. All referenced paths will remain correct to the new location, similar to the `Advanced Copy` function Unreal Engine has by default. 
+
+**TemplateImage:** This asset is what defines the image shown for your template within the plugin interface. It can be named either `T_TemplateImage` or `TemplateImage`. This assets should be a square image as the plugin will render it at 32x32 pixels. This asset **will not** be copied over when you create a mod from this template, and is purely used for the plugin interface. 
+
+**NOTE:** Any `Data Asset` of the type `Primary Asset Label` will be renamed to whatever you named your mod after copying to the new location. Eg, if you named your mod `TheBestThingEver`, and used a template that contained a `Primary Asset Label`, the copied "PAL" would be named `DA_TheBestThingEver`. This is done because no two "PAL" files can have the same name without Unreal Engine showing warning messages. 
+
 ---
 
 ## Uploading to Nexus Mods
