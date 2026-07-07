@@ -43,6 +43,7 @@ The plugin currently supports the Unreal Engine versions 4.26 → 5.8. Support f
 |     | Resource | Description |
 |:---:|----------|-------------|
 | 🚀 | [Basic Install](Docs/Installing.md) | Install the plugin into your Unreal project. |
+| 🧭 | [Using the Plugin](Docs/Using.md) | Information for how to use various features. |
 | 🩹 | [Troubleshooting](Docs/Troubleshooting.md) | Resolve common issues. |
 | 🛠️ | [Building from Source](Docs/Building.md) | Build and develop locally. |
 | 🤝 | [Contributing](Docs/Contributing.md) | Learn how to contribute. |
