@@ -12,43 +12,49 @@
 
 </div>
 
-## Overview
+## 📖 Overview
 
-Nexus Mods Author Tools is an open-source Unreal Engine plugin designed to simplify the process of creating, managing, packaging, and publishing game mods to Nexus Mods. The aim is to reduce the technical barriers involved in creating Unreal Engine game mods by providing a consistent, integrated workflow directly within the Unreal Editor. 
-
-Rather than requiring authors to switch between multiple external tools, the plugin integrates common mod development workflows directly into the Unreal Editor, helping both new and experienced creators spend less time on project setup and more time building content. 
+Nexus Mods Author Tools is an open-source Unreal Engine plugin that simplifies creating, packaging and publishing game mods to Nexus Mods. By integrating common mod authoring workflows directly into the Unreal Editor, it reduces setup complexity and lets creators focus on building content instead of configuring tooling.
 
 The plugin currently supports the Unreal Engine versions 4.26 → 5.8. Support for additional engine versions may be added in future releases.
 
 ---
 
-## Features
-- Native Unreal Editor integration
-- Integrated Nexus Mods upload support
-- Built-in mod template management
-- Mod archive creation prior to upload
-- Cross-version support for Unreal Engine 4 and 5
-- Extensible framework for future authoring tools
+## ✨ Features
 
-Planned areas of development include:
-- Markdown rendering for in-editor help, documentation and release notes
-- Additional modding workflows and project templates
-- Improved validation and diagnostics
-- Expanded editor utilities
-- Improved documentation
-
----
-
-## Documentation
-- [Basic Install](/Docs/Installing.md)
-- [Common Issues](/Docs/Troubleshooting.md)
-- [Building From Source](/Docs/Building.md)
-- [Contributions](/Docs/Contributing.md)
-- [Release Tools](/Docs/Releasing.md)
+| Feature | Status |
+|---------|--------|
+| Native Unreal Editor Integration | ✅ Available |
+| Nexus Mods Upload Support | ✅ Available |
+| Mod Template Management | ✅ Available |
+| Archive Creation | ✅ Available |
+| Cross-Version Unreal Support | ✅ Available |
+| Extensible Framework | ✅ Available |
+| Markdown Rendering | 🚧 Planned |
+| Additional Templates | 🚧 Planned |
+| Validation & Diagnostics | 🚧 Planned |
+| Expanded Editor Utilities | 🚧 Planned |
+| Documentation Improvements | 🚧 Planned |
 
 ---
 
-## License
+## 📚 Documentation & Resources
+
+|     | Resource | Description |
+|:---:|----------|-------------|
+| 🚀 | [Basic Install](Docs/Installing.md) | Install the plugin into your Unreal project. |
+| 🩹 | [Troubleshooting](Docs/Troubleshooting.md) | Resolve common issues. |
+| 🛠️ | [Building from Source](Docs/Building.md) | Build and develop locally. |
+| 🤝 | [Contributing](Docs/Contributing.md) | Learn how to contribute. |
+| 📦 | [Release Tools](Docs/Releasing.md) | Build and publish releases. |
+| 🐞 | [Report a Bug](https://github.com/Nexus-Mods/NexusModsAuthorToolsUE/issues/new?template=bug_report.md) | Found an issue? Let us know. |
+| 💡 | [Request a Feature](https://github.com/Nexus-Mods/NexusModsAuthorToolsUE/issues/new?template=feature_request.md) | Suggest a new idea. |
+| 📋 | [Issue Tracker](https://github.com/Nexus-Mods/NexusModsAuthorToolsUE/issues) | Browse existing issues and roadmap items. |
+| 📦 | [Latest Release](https://github.com/Nexus-Mods/NexusModsAuthorToolsUE/releases/latest) | Download the latest stable version. |
+
+---
+
+## 📄 License
 
 This project is licensed under the terms described in the accompanying [LICENSE](LICENSE) file.
 
@@ -56,17 +62,17 @@ While contributions are welcome, the project is intended to support the Nexus Mo
 
 ---
 
-## Third-Party Libraries / Resources
+## 🧩 Third-Party Libraries / Resources
 
 This project includes the following third-party libraries and assets:
 
-| Library/Resource | Purpose | License |
+| Component | Purpose | License |
 |---------|---------|---------|
 | [**FontAwesome**](https://fontawesome.com) | User interface icons | CC BY 4.0 |
 | [**miniz**](https://github.com/richgel999/miniz) | ZIP archive creation and extraction | MIT / Public Domain |
 
 ---
 
-## Disclaimer
 
-Nexus Mods Author Tools is developed by Nexus Mods to improve the Unreal Engine mod authoring experience. This project is not affiliated with or endorsed by Epic Games. Unreal Engine is a trademark or registered trademark of Epic Games, Inc.
+> [!WARNING]
+> Nexus Mods Author Tools is developed by Nexus Mods to improve the Unreal Engine mod authoring experience. This project is not affiliated with or endorsed by Epic Games. Unreal Engine is a trademark or registered trademark of Epic Games, Inc.
