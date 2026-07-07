@@ -73,7 +73,7 @@ Please review the license before using or redistributing the software.
 
 ---
 
-## ❤️ Support the Project
+## 🤝 Get Involved
 
 Contributions, feedback, bug reports, and feature suggestions are always welcome.
 
