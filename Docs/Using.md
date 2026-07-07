@@ -146,7 +146,7 @@ Coming Soon...
 
 - Test packaged builds before uploading!!
 - Keep changelogs (file descriptions) meaningful.
-- Use proper version identifiers (eg: 4.2.0, 6.7, etc).
+- Use proper version identifiers (eg: 1, 2, 4.2.0, 6.7, etc).
 
 
 ---
