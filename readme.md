@@ -54,15 +54,7 @@ The plugin currently supports the Unreal Engine versions 4.26 → 5.8. Support f
 
 ---
 
-## 📄 License
-
-Nexus Mods Author Tools is released under the accompanying [LICENSE](LICENSE).
-
-Please review the license before using or redistributing the software.
-
----
-
-## 🧩 Third-Party Libraries / Resources
+## 🧩 Third-Party Components
 
 This project includes the following third-party libraries and assets:
 
@@ -70,6 +62,14 @@ This project includes the following third-party libraries and assets:
 |---------|---------|---------|
 | [**FontAwesome**](https://fontawesome.com) | User interface icons | CC BY 4.0 |
 | [**miniz**](https://github.com/richgel999/miniz) | ZIP archive creation and extraction | MIT / Public Domain |
+
+---
+
+## 📄 License
+
+Nexus Mods Author Tools is released under the accompanying [LICENSE](LICENSE).
+
+Please review the license before using or redistributing the software.
 
 ---
 
