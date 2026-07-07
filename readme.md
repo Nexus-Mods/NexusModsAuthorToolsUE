@@ -45,8 +45,9 @@ Planned areas of development include:
 - [Building From Source](/Docs/Building.md)
 - [Release Tools](/Docs/Releasing.md)
 
+---
 
-# Contributing
+## Contributing
 
 Contributions are welcome.
 
@@ -61,7 +62,7 @@ Please keep contributions focused, well documented, and consistent with the proj
 
 ---
 
-# License
+## License
 
 This project is licensed under the terms described in the accompanying [LICENSE](LICENSE) file.
 
@@ -69,7 +70,7 @@ While contributions are welcome, the project is intended to support the Nexus Mo
 
 ---
 
-# Third-Party Libraries / Resources
+## Third-Party Libraries / Resources
 
 This project includes the following third-party libraries and assets:
 
@@ -80,10 +81,6 @@ This project includes the following third-party libraries and assets:
 
 ---
 
-# Disclaimer
+## Disclaimer
 
-Nexus Mods Author Tools is developed by Nexus Mods to improve the Unreal Engine mod authoring experience.
-
-This project is not affiliated with or endorsed by Epic Games.
-
-Unreal Engine is a trademark or registered trademark of Epic Games, Inc.
+Nexus Mods Author Tools is developed by Nexus Mods to improve the Unreal Engine mod authoring experience. This project is not affiliated with or endorsed by Epic Games. Unreal Engine is a trademark or registered trademark of Epic Games, Inc.
