@@ -43,22 +43,8 @@ Planned areas of development include:
 - [Basic Install](/Docs/Installing.md)
 - [Common Issues](/Docs/Troubleshooting.md)
 - [Building From Source](/Docs/Building.md)
+- [Contributions](/Docs/Contributing.md)
 - [Release Tools](/Docs/Releasing.md)
-
----
-
-## Contributing
-
-Contributions are welcome.
-
-If you would like to contribute:
-
-- Report bugs through GitHub Issues.
-- Suggest new features or improvements.
-- Submit Pull Requests.
-- Follow the existing project architecture and coding style.
-
-Please keep contributions focused, well documented, and consistent with the project's overall design.
 
 ---
 
