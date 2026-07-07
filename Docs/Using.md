@@ -153,6 +153,7 @@ Coming Soon...
 
 ## Related Documentation
 
-- 🚀 Installation
-- 🛠️ Building From Source
-- 📦 Release Tools
+- 🚀 [Installing](Installing.md)
+- 🛠️ [Building From Source](Building.md)
+- 🤝 [Contributing](Contributing.md)
+
