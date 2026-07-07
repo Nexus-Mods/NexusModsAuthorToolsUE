@@ -56,9 +56,9 @@ The plugin currently supports the Unreal Engine versions 4.26 → 5.8. Support f
 
 ## 📄 License
 
-This project is licensed under the terms described in the accompanying [LICENSE](LICENSE) file.
+Nexus Mods Author Tools is released under the accompanying [LICENSE](LICENSE).
 
-While contributions are welcome, the project is intended to support the Nexus Mods ecosystem and may not be used to develop competing commercial mod distribution services as described in the license.
+Please review the license before using or redistributing the software.
 
 ---
 
@@ -73,6 +73,13 @@ This project includes the following third-party libraries and assets:
 
 ---
 
+## ❤️ Support the Project
+
+Contributions, feedback, bug reports, and feature suggestions are always welcome.
+
+If you'd like to help improve Nexus Mods Author Tools, please see the [Contributing Guide](Docs/Contributing.md).
+
+--- 
 
 > [!WARNING]
-> Nexus Mods Author Tools is developed by Nexus Mods to improve the Unreal Engine mod authoring experience. This project is not affiliated with or endorsed by Epic Games. Unreal Engine is a trademark or registered trademark of Epic Games, Inc.
+> Nexus Mods Author Tools is developed by Nexus Mods and is not affiliated with or endorsed by Epic Games. Unreal Engine is a trademark or registered trademark of Epic Games, Inc.
