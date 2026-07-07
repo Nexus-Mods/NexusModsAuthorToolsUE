@@ -38,6 +38,33 @@ A common workflow looks like this:
 
 Each of these steps can be completed from within the Unreal Editor.
 
+
+---
+
+## Opening The Plugin
+After the plugin has been added, your Unreal Engine interface should show a shiny new Nexus Mods button.
+
+If you can see this button, then the plugin has been added properly!
+
+![PluginButton](/.github/Images/PluginButton.png)
+
+---
+
+## Navigating the UI
+
+Before you start using the plugin properly, you should fill in some basic details to enable all features of the plugin. 
+
+![MainUI](/.github/Images/MainUI.png)
+
+**Game Domain:** visit the https://www.nexusmods.com/games/ page for your desired game. Copy the game identifier, also known as the game `slug` into the `Game Domain` section within the plugin. This tells the plugin which page to open when you click the `Create Mod Page` button. 
+
+![GameDomain](/.github/Images/GameDomain.png)
+
+
+**API Key:** Visit the https://www.nexusmods.com/settings/api-keys page, scroll all the way to the bottom, and request/copy your personal API Key. This is the `API Key` that you would paste into the plugin settings. This allows the plugin to upload mods to your account - after a page has been created for the mod. 
+
+After you have entered the details into these two sections, remember to click the `Save Config` button. This should cause the `Create Mod Page` button to become available. 
+
 ---
 
 ## Creating Your First Mod
@@ -45,6 +72,7 @@ Each of these steps can be completed from within the Unreal Editor.
 Explain...
 
 (screenshots)
+
 
 ---
 
@@ -54,13 +82,13 @@ Explain...
 
 (screenshots)
 
+
 ---
 
 ## Packaging Mods
 
-Explain...
+Coming Soon...
 
-(screenshots)
 
 ---
 
@@ -70,11 +98,6 @@ Explain...
 
 (screenshots)
 
----
-
-## Settings
-
-Describe the available plugin settings and configuration options.
 
 ---
 
@@ -84,6 +107,7 @@ Describe the available plugin settings and configuration options.
 - Keep metadata up to date.
 - Test packaged builds before uploading.
 - Keep changelogs meaningful.
+
 
 ---
 
